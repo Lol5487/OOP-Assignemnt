@@ -4,12 +4,13 @@
  */
 package OOPAssignment;
 
-import oopassignment.model.Admin;
+//import oopassignment.model.Admin;
 import OOPAssignment.Gui.MainFrame;
 
 public class MainClass {
     public static void main(String[] args) {
         MainFrame frame = new MainFrame();
         frame.setVisible(true);
+        fuckkk
     }
 }
