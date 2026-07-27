@@ -25,7 +25,7 @@ public class AdminPanel extends javax.swing.JPanel {
         innerCardLayout = new CardLayout();
         contentPanel.setLayout(innerCardLayout);
 
-        contentPanel.add(new DashboardPanel(admin), "dashboard");
+        contentPanel.add(new AdminDashboardPanel(admin), "dashboard");
         contentPanel.add(new ManageStaffPanel(admin), "manageStaff");
         contentPanel.add(new RosterPanel(admin), "roster");
         contentPanel.add(new ReportsPanel(admin), "reports");

@@ -9,10 +9,10 @@ import OOPAssignment.model.Admin;
  *
  * @author Asus
  */
-public class DashboardPanel extends javax.swing.JPanel {
+public class AdminDashboardPanel extends javax.swing.JPanel {
 
     private Admin admin;
-    public DashboardPanel(Admin admin) {
+    public AdminDashboardPanel(Admin admin) {
         initComponents();
         this.admin = admin;
     }
