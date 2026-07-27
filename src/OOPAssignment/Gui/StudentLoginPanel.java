@@ -111,21 +111,12 @@ public class StudentLoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordTfActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        String inputUsername = usernameTf.getText();
-        String inputPassword = new String(passwordTf.getPassword());  // JPasswordField要这样拿值
 
-        boolean success = admin.login(inputUsername, inputPassword);
-
-        if (success) {
-            mainFrame.showPanel("admin");
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
-        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
 
-        mainFrame.showPanel("menu");
+        
     }//GEN-LAST:event_backBtnActionPerformed
 
 
