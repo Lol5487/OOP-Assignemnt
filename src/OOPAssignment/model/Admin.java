@@ -122,11 +122,10 @@ public class Admin extends User{
 
     for (int i = 0; i < lines.length; i++) {
         String[] parts = lines[i].split(",");
-
+    
         if (parts.length < 4) {
             continue;   // 资料格式不对,跳过这一行
         }
-
         String username = parts[0];
         String password = parts[1];
         String name = parts[2];
@@ -148,4 +147,12 @@ public class Admin extends User{
         }
     }
 }
+    public boolean isUsernameTaken(String username) {
+    for (int i = 0; i < staffCount; i++) {
+        if (staffList[i].getUsername().equals(username)) {
+            return true;
+        }
+    }
+        return false;
+        }
 }
