@@ -109,26 +109,6 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTfActionPerformed
-    String username = usernameTf.getText();
-    String password = passwordTf.getText();
-    String name = nameTf.getText();
-
-    if (username.isEmpty() || password.isEmpty() || name.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
-        return;
-    }
-
-    OOPAssignment.model.Counselor newStaff = new OOPAssignment.model.Counselor(username, password, name);
-    boolean success = admin.addStaff(newStaff);
-
-    if (success) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Staff added successfully!");
-        usernameTf.setText("");
-        passwordTf.setText("");
-        nameTf.setText("");
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Failed to add staff!");
-    }
 
     }//GEN-LAST:event_passwordTfActionPerformed
 
@@ -137,8 +117,20 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         String password = passwordTf.getText();
         String name = nameTf.getText();
 
-        if (username.isEmpty() || password.isEmpty() || name.isEmpty()) {
+        if (OOPAssignment.util.Validator.isEmpty(username) ||
+            OOPAssignment.util.Validator.isEmpty(password) ||
+            OOPAssignment.util.Validator.isEmpty(name)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
+            return;
+        }
+
+        if (!OOPAssignment.util.Validator.isValidPassword(password)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Password must be at least 6 characters!");
+            return;
+        }
+
+        if (admin.isUsernameTaken(username)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Username already exists! Please choose another.");
             return;
         }
 
