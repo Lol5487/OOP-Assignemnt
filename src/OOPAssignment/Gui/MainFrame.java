@@ -6,42 +6,53 @@ package OOPAssignment.Gui;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import OOPAssignment.Gui.AdminPanel;
+import OOPAssignment.model.Admin; 
 
 /**
  *
  * @author Asus
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
+
+    private final CardLayout cardLayout;
+    private final JPanel cardPanel;
+    private Admin sharedAdmin;
 
     /**
      * Creates new form MainFrame
      */
-    private CardLayout cardLayout;
-    private JPanel cardPanel;
+    public MainFrame() {
+        initComponents();
+        
+        sharedAdmin = new Admin("admin01", "adminpass", "Ali");
 
-public MainFrame() {
-    initComponents();
-    
-    cardLayout = new CardLayout();
-    cardPanel = new JPanel(cardLayout);
-    
-    cardPanel.add(new AdminPanel(), "admin");
-    // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
-    // cardPanel.add(new CounselorPanel(), "counselor");
-    // cardPanel.add(new ReceptionistPanel(), "receptionist");
-    // cardPanel.add(new StudentPanel(), "student");
-    
-    add(cardPanel);
-    setSize(925, 495);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-}
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
 
-public void showPanel(String name) {
-    cardLayout.show(cardPanel, name);
-}
+        cardPanel.add(new MenuPanel(this), "menu");
+        cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");   // ✅ 补上sharedAdmin
+        cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
+        // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
+        // cardPanel.add(new CounselorPanel(), "counselor");
+        // cardPanel.add(new ReceptionistPanel(), "receptionist");
+        // cardPanel.add(new StudentPanel(), "student");
+
+        getContentPane().removeAll();          // 清掉GroupLayout留下的空设置
+        getContentPane().setLayout(new java.awt.BorderLayout());  // 换成简单的Layout
+        getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
+
+        setSize(925, 495);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        cardLayout.show(cardPanel, "menu");
+        revalidate();
+        repaint();
+    }
+
+    public void showPanel(String name) {
+        cardLayout.show(cardPanel, name);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,32 +63,18 @@ public void showPanel(String name) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
 
-        jPanel1.setLayout(new java.awt.CardLayout());
-
-        jPanel2.setLayout(new java.awt.CardLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/admin_panel_mockup_925x495.png"))); // NOI18N
-        jPanel2.add(jLabel2, "card2");
-
-        jPanel1.add(jPanel2, "card2");
-
-        getContentPane().add(jPanel1, "card2");
-
-        jPanel3.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/admin_panel_mockup_925x495.png"))); // NOI18N
-        jPanel3.add(jLabel1, "card2");
-
-        getContentPane().add(jPanel3, "card3");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 933, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 506, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -86,11 +83,6 @@ public void showPanel(String name) {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -101,17 +93,11 @@ public void showPanel(String name) {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

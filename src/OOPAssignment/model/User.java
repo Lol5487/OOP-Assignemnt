@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package oopassignment.model;
+package OOPAssignment.model;
 
 public class User {
     protected String username;
     protected String password;
     protected String name;
 
-    
+    // constructor
     public User(String username, String password, String name) {
         this.username = username;
         this.password = password;
@@ -32,8 +32,8 @@ public class User {
     public String getPassword() {
         return password;
     }
-    
+
     public void setName(String name) {
-    this.name = name;
+        this.name = name;
     }
 }
