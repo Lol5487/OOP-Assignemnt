@@ -4,19 +4,35 @@
  */
 package OOPAssignment.Gui;
 
-/**
- *
- * @author holyl
- */
+import OOPAssignment.model.Receptionist;
+import OOPAssignment.model.User;
+
 public class StudentLoginPanel extends javax.swing.JPanel {
+    
+    private MainFrame mainFrame;
+    private Receptionist receptionist;
 
-    /**
-     * Creates new form StudentLoginPanel
-     */
-    public StudentLoginPanel() {
+    public StudentLoginPanel(MainFrame mainFrame, Receptionist receptionist) {
         initComponents();
+        this.mainFrame = mainFrame;
+        this.receptionist = receptionist;
+ 
+        usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    passwordTf.requestFocus();
+                }
+            }
+        });
+ 
+        passwordTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    loginBtnActionPerformed(null);
+                }
+            }
+        });
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +42,7 @@ public class StudentLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         usernameTf = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -33,7 +50,8 @@ public class StudentLoginPanel extends javax.swing.JPanel {
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText("Student Login");
 
         jLabel2.setText("Username:");
 
@@ -50,8 +68,6 @@ public class StudentLoginPanel extends javax.swing.JPanel {
         backBtn.addActionListener(this::backBtnActionPerformed);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
-
-        jLabel1.setText("Student Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,11 +128,22 @@ public class StudentLoginPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
+        String inputUsername = usernameTf.getText();
+        String inputPassword = passwordTf.getText();
+ 
+        User foundStudent = receptionist.findStudentByUsername(inputUsername);
+ 
+        if (foundStudent != null && foundStudent.login(inputUsername, inputPassword)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+            mainFrame.showStudentPanel(foundStudent);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
 
-        
+        mainFrame.showPanel("menu");
     }//GEN-LAST:event_backBtnActionPerformed
 
 

@@ -7,6 +7,7 @@ package OOPAssignment.Gui;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import OOPAssignment.model.Admin; 
+import OOPAssignment.model.Receptionist;
 
 /**
  *
@@ -19,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final CardLayout cardLayout;
     private final JPanel cardPanel;
     private Admin sharedAdmin;
+    private Receptionist sharedReceptionist;
 
     /**
      * Creates new form MainFrame
@@ -34,6 +36,8 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(new MenuPanel(this), "menu");
         cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
+//        cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
+        cardPanel.add(new StudentLoginPanel(this, sharedReceptionist), "studentLogin"); 
         // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
         cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
         // cardPanel.add(new ReceptionistPanel(), "receptionist");
@@ -53,7 +57,11 @@ public class MainFrame extends javax.swing.JFrame {
     public void showPanel(String name) {
         cardLayout.show(cardPanel, name);
     }
-
+    
+    public void showStudentPanel(OOPAssignment.model.User loggedInStudent) {
+        cardPanel.add(new StudentPanel(this, sharedReceptionist, loggedInStudent), "student");
+        cardLayout.show(cardPanel, "student");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
