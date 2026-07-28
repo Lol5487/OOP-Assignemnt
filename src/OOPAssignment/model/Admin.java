@@ -10,8 +10,10 @@ public class Admin extends User{
     private User[] staffList;
     private int staffCount;
 
-    private String[] scheduleNames;   // 员工名字
-    private String[] scheduleDays;    // 对应的上班日
+    private String[] scheduleNames;
+    private String[] scheduleDays;     
+    private String[] scheduleStartTimes;
+    private String[] scheduleEndTimes;
     private int scheduleCount;
 
     public Admin(String username, String password, String name) {
@@ -21,9 +23,12 @@ public class Admin extends User{
 
         scheduleNames = new String[50];
         scheduleDays = new String[50];
+        scheduleStartTimes = new String[50];
+        scheduleEndTimes = new String[50];
         scheduleCount = 0;
         
-        loadStaff();   // 加这行,一造出Admin,就自动读取旧资料
+        loadStaff(); 
+        loadSchedule();
     }
 
     // ---------- CRUD for staff ----------
@@ -58,6 +63,7 @@ public class Admin extends User{
         for (int i = 0; i < staffCount; i++) {
             if (staffList[i].getUsername().equals(username)) {
                 staffList[i].setName(newName);
+                rewriteStaffFile();
                 return true;
             }
         }
@@ -71,6 +77,7 @@ public class Admin extends User{
                     staffList[j] = staffList[j + 1];
                 }
                 staffCount--;
+                rewriteStaffFile();
                 return true;
             }
         }
@@ -79,25 +86,31 @@ public class Admin extends User{
 
     // ---------- Roster / Schedule ----------
 
-    public boolean addSchedule(String staffName, String day) {
+    public boolean addSchedule(String staffName, String date, String startTime, String endTime) {
         if (scheduleCount >= scheduleNames.length) {
             System.out.println("Schedule list is full!");
             return false;
         }
         scheduleNames[scheduleCount] = staffName;
-        scheduleDays[scheduleCount] = day;
+        scheduleDays[scheduleCount] = date;
+        scheduleStartTimes[scheduleCount] = startTime;
+        scheduleEndTimes[scheduleCount] = endTime;
         scheduleCount++;
+
+        String line = staffName + "," + date + "," + startTime + "," + endTime;
+        FileHandler.appendLine("schedule.txt", line);
+
         return true;
     }
 
     public String viewSchedule() {
         String result = "=== Staff Roster ===\n";
         for (int i = 0; i < scheduleCount; i++) {
-            result += scheduleNames[i] + " works on " + scheduleDays[i] + "\n";
+            result += scheduleNames[i] + " works on " + scheduleDays[i] 
+                    + " from " + scheduleStartTimes[i] + " to " + scheduleEndTimes[i] + "\n";
         }
         return result;
     }
-
     // ---------- Generate report (writes to a text file) ----------
 
     public boolean generateReport(String type) {
@@ -158,5 +171,80 @@ public class Admin extends User{
     }
         return false;
         }
+    public boolean isStaffExist(String name) {
+    for (int i = 0; i < staffCount; i++) {
+        if (staffList[i].getName().equalsIgnoreCase(name)) {
+            return true;
+        }
+    }
+    return false;
+}
+    private void loadSchedule() {
+        String[] lines = FileHandler.readAllLines("schedule.txt");
+
+        for (int i = 0; i < lines.length; i++) {
+            String[] parts = lines[i].split(",");
+
+            if (parts.length < 4) {
+                continue;
+            }
+
+            if (scheduleCount < scheduleNames.length) {
+                scheduleNames[scheduleCount] = parts[0];
+                scheduleDays[scheduleCount] = parts[1];
+                scheduleStartTimes[scheduleCount] = parts[2];
+                scheduleEndTimes[scheduleCount] = parts[3];
+                scheduleCount++;
+            }
+        }
+    }
+    public boolean deleteSchedule(String staffName, String date) {
+    for (int i = 0; i < scheduleCount; i++) {
+        if (scheduleNames[i].equalsIgnoreCase(staffName) && scheduleDays[i].equals(date)) {
+            // 找到了,把后面的资料往前移一格,盖掉这一笔
+            for (int j = i; j < scheduleCount - 1; j++) {
+                scheduleNames[j] = scheduleNames[j + 1];
+                scheduleDays[j] = scheduleDays[j + 1];
+                scheduleStartTimes[j] = scheduleStartTimes[j + 1];
+                scheduleEndTimes[j] = scheduleEndTimes[j + 1];
+            }
+            scheduleCount--;
+
+            rewriteScheduleFile();   // 重新写整个文件(因为文件是一行一行append的,删除要整个重写)
+
+            return true;
+        }
+    }
+    return false;
+    }
+    private void rewriteScheduleFile() {
+        // 先清空整个文件(用false,不是append模式)
+        try {
+            FileWriter fw = new FileWriter("staff.txt", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < staffCount; i++) {
+                String role = staffList[i].getClass().getSimpleName();
+                bw.write(staffList[i].getUsername() + "," + staffList[i].getPassword() + "," + staffList[i].getName() + "," + role);
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error rewriting staff file: " + e.getMessage());
+        }
+    }
+    private void rewriteStaffFile() {
+    try {
+            FileWriter fw = new FileWriter("staff.txt", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < staffCount; i++) {
+                String role = staffList[i].getClass().getSimpleName();
+                bw.write(staffList[i].getUsername() + "," + staffList[i].getPassword() + "," + staffList[i].getName() + "," + role);
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error rewriting staff file: " + e.getMessage());
+        }
+    }
     
 }

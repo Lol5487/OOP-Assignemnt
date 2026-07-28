@@ -46,6 +46,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
 
         totalStaffLbl.setText("Total");
 
+        staffListArea.setEditable(false);
         staffListArea.setColumns(20);
         staffListArea.setRows(5);
         jScrollPane1.setViewportView(staffListArea);

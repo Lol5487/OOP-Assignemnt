@@ -54,7 +54,6 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("Admin Login");
 
@@ -73,8 +72,6 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         backBtn.addActionListener(this::backBtnActionPerformed);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
-
-        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,15 +95,10 @@ public class AdminLoginPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(317, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(loginBtn)
-                        .addGap(70, 70, 70)
-                        .addComponent(backBtn)
-                        .addGap(402, 402, 402))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(194, 194, 194))))
+                .addComponent(loginBtn)
+                .addGap(70, 70, 70)
+                .addComponent(backBtn)
+                .addGap(402, 402, 402))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +106,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel1))
-                .addGap(21, 21, 21)
-                .addComponent(jLabel4)
-                .addGap(59, 59, 59)
+                .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,7 +154,6 @@ public class AdminLoginPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField passwordTf;
