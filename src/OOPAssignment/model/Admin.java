@@ -49,8 +49,11 @@ public class Admin extends User{
             result += (i + 1) + ". " + staffList[i].getName() + " (" + staffList[i].getUsername() + ")\n";
         }
         return result;
+        
     }
-
+        public int getStaffCount() {
+            return staffCount;
+        }
     public boolean updateStaff(String username, String newName) {
         for (int i = 0; i < staffCount; i++) {
             if (staffList[i].getUsername().equals(username)) {
@@ -155,4 +158,5 @@ public class Admin extends User{
     }
         return false;
         }
+    
 }

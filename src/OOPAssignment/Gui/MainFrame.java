@@ -35,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");   // ✅ 补上sharedAdmin
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
         // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
-        // cardPanel.add(new CounselorPanel(), "counselor");
+        //cardPanel.add(new CounselorLoginPanel(), "counselor");
         // cardPanel.add(new ReceptionistPanel(), "receptionist");
         // cardPanel.add(new StudentPanel(), "student");
 
@@ -43,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.BorderLayout());  // 换成简单的Layout
         getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
 
-        setSize(925, 495);
+        setSize(933, 506);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         cardLayout.show(cardPanel, "menu");
         revalidate();
