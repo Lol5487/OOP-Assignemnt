@@ -10,6 +10,7 @@ package OOPAssignment.Gui;
  */
 public class CounselorLoginPanel extends javax.swing.JPanel {
     
+    private MainFrame mainFrame;
     private static final String COUNSELOR_USERNAME = "counselor1";
     private static final String COUNSELOR_PASSWORD = "pass123";
     
@@ -121,6 +122,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
 
     private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTActionPerformed
         // TODO add your handling code here:
+        mainFrame.showPanel("menu");
     }//GEN-LAST:event_BackBTActionPerformed
 
     private void UsernameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameTFActionPerformed
