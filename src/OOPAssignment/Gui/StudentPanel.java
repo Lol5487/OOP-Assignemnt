@@ -4,17 +4,39 @@
  */
 package OOPAssignment.Gui;
 
+import OOPAssignment.model.Receptionist;
+import OOPAssignment.model.User;
+import java.awt.CardLayout;
+
 /**
  *
  * @author holyl
  */
 public class StudentPanel extends javax.swing.JPanel {
+    
+    private MainFrame mainFrame;
+    private Receptionist receptionist;
+    private User loggedInStudent;
+    private CardLayout innerCardLayout;
 
     /**
      * Creates new form StudentPanel
      */
-    public StudentPanel() {
+   public StudentPanel(MainFrame mainFrame, Receptionist receptionist, User loggedInStudent) {
         initComponents();
+        this.mainFrame = mainFrame;
+        this.receptionist = receptionist;
+        this.loggedInStudent = loggedInStudent;
+ 
+        innerCardLayout = new CardLayout();
+        contentPanel.setLayout(innerCardLayout);
+ 
+        contentPanel.add(new StudentDashboardPanel(loggedInStudent), "dashboard");
+        // 之后加更多功能,一样加进来:
+        // contentPanel.add(new BookAppointmentPanel(...), "book");
+        // contentPanel.add(new MyAppointmentHistoryPanel(...), "history");
+ 
+        innerCardLayout.show(contentPanel, "dashboard");
     }
 
     /**
@@ -26,19 +48,67 @@ public class StudentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dashboardBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+
+        dashboardBtn.setText("dashboard");
+
+        jLabel1.setText("Student");
+
+        logoutBtn.setText("log out");
+        logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 864, Short.MAX_VALUE)
+        );
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(dashboardBtn)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(logoutBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(171, 171, 171))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dashboardBtn)
+                    .addComponent(jLabel1)
+                    .addComponent(logoutBtn))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JButton dashboardBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton logoutBtn;
     // End of variables declaration//GEN-END:variables
 }
