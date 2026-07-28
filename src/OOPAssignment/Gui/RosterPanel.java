@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package OOPAssignment.Gui;
+
 import OOPAssignment.model.Admin;
-/**
- *
- * @author Asus
- */
+import OOPAssignment.util.Validator;
+
 public class RosterPanel extends javax.swing.JPanel {
 
     private Admin admin;
@@ -15,7 +14,18 @@ public class RosterPanel extends javax.swing.JPanel {
     public RosterPanel(Admin admin) {
         initComponents();
         this.admin = admin;
+        javax.swing.SpinnerDateModel dateModel = new javax.swing.SpinnerDateModel();
+        dateSpinner.setModel(dateModel);
+        javax.swing.JSpinner.DateEditor dateEditor = new javax.swing.JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
+        dateSpinner.setEditor(dateEditor);
+        refreshData();
     }
+
+    private void refreshData() {
+        scheduleListArea.setText(admin.viewSchedule());
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,29 +36,213 @@ public class RosterPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        staffNameTf = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        addScheduleBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scheduleListArea = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        startTimeTf = new javax.swing.JTextField();
+        dateSpinner = new javax.swing.JSpinner();
+        endTimeTf = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        deleteScheduleBtn = new javax.swing.JButton();
 
-        jLabel1.setText("ROSTER");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Roster / Schedule");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("Staff Name:");
+
+        staffNameTf.addActionListener(this::staffNameTfActionPerformed);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Day           :");
+
+        addScheduleBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        addScheduleBtn.setText("Add Schedule");
+        addScheduleBtn.addActionListener(this::addScheduleBtnActionPerformed);
+
+        scheduleListArea.setEditable(false);
+        scheduleListArea.setColumns(20);
+        scheduleListArea.setRows(5);
+        jScrollPane1.setViewportView(scheduleListArea);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("Start Time :");
+
+        startTimeTf.addActionListener(this::startTimeTfActionPerformed);
+
+        endTimeTf.addActionListener(this::endTimeTfActionPerformed);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel5.setText("End Time  :");
+
+        deleteScheduleBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        deleteScheduleBtn.setText("Delete Schedule");
+        deleteScheduleBtn.addActionListener(this::deleteScheduleBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(257, 257, 257)
+                .addGap(213, 213, 213)
                 .addComponent(jLabel1)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(staffNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(addScheduleBtn))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteScheduleBtn)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(endTimeTf, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                .addComponent(startTimeTf)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel1)
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(staffNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(startTimeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(endTimeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addScheduleBtn)
+                            .addComponent(deleteScheduleBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void staffNameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffNameTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_staffNameTfActionPerformed
+
+    private void addScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addScheduleBtnActionPerformed
+
+        String staffName = staffNameTf.getText();
+
+        java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(selectedDate);
+
+        String startTime = startTimeTf.getText();
+        String endTime = endTimeTf.getText();
+
+        if (Validator.isEmpty(staffName) || Validator.isEmpty(startTime) || Validator.isEmpty(endTime)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
+            return;
+        }
+
+        if (startTime.equals(endTime)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Start time and end time cannot be the same!");
+            return;
+        }
+
+        if (!admin.isStaffExist(staffName)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "This staff does not exist! Please check the name.");
+            return;
+        }
+
+        boolean success = admin.addSchedule(staffName, date, startTime, endTime);
+
+        if (success) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Schedule added successfully!");
+            staffNameTf.setText("");
+            startTimeTf.setText("");
+            endTimeTf.setText("");
+            refreshData();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Failed to add schedule!");
+        }
+    }//GEN-LAST:event_addScheduleBtnActionPerformed
+
+    private void startTimeTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startTimeTfActionPerformed
+        // TODO add your handling code here: 
+    }//GEN-LAST:event_startTimeTfActionPerformed
+
+    private void endTimeTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endTimeTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_endTimeTfActionPerformed
+
+    private void deleteScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteScheduleBtnActionPerformed
+        String staffName = staffNameTf.getText();
+
+        java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(selectedDate);
+
+        if (Validator.isEmpty(staffName)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter the staff name to delete!");
+            return;
+        }
+
+        boolean success = admin.deleteSchedule(staffName, date);
+
+        if (success) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Schedule deleted successfully!");
+            staffNameTf.setText("");
+            refreshData();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Schedule not found! Please check name and date.");
+        }
+
+    }//GEN-LAST:event_deleteScheduleBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addScheduleBtn;
+    private javax.swing.JSpinner dateSpinner;
+    private javax.swing.JButton deleteScheduleBtn;
+    private javax.swing.JTextField endTimeTf;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea scheduleListArea;
+    private javax.swing.JTextField staffNameTf;
+    private javax.swing.JTextField startTimeTf;
     // End of variables declaration//GEN-END:variables
 }

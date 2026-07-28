@@ -4,6 +4,7 @@
  */
 package OOPAssignment.Gui;
 import OOPAssignment.model.Admin;
+import OOPAssignment.util.Validator;
 /**
  *
  * @author Asus
@@ -15,8 +16,11 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     public ManageStaffPanel(Admin admin) {
         initComponents();
         this.admin = admin;
+        refreshData();
     }
-
+        private void refreshData() {
+            staffListArea.setText(admin.viewAllStaff());
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +40,9 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         addStaffBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         staffListArea = new javax.swing.JTextArea();
+        deleteStaffBtn = new javax.swing.JButton();
+        updateStaffBtn = new javax.swing.JButton();
+        refreshBtn = new javax.swing.JButton();
 
         usernameLabel.setText("Username: ");
 
@@ -55,6 +62,15 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         staffListArea.setColumns(20);
         staffListArea.setRows(5);
         jScrollPane1.setViewportView(staffListArea);
+
+        deleteStaffBtn.setText("Delete");
+        deleteStaffBtn.addActionListener(this::deleteStaffBtnActionPerformed);
+
+        updateStaffBtn.setText("Update");
+        updateStaffBtn.addActionListener(this::updateStaffBtnActionPerformed);
+
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(this::refreshBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,12 +94,18 @@ public class ManageStaffPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(addStaffBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(addStaffBtn)
+                        .addGap(33, 33, 33)
+                        .addComponent(updateStaffBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteStaffBtn)
+                        .addGap(121, 121, 121)
+                        .addComponent(refreshBtn)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,10 +123,14 @@ public class ManageStaffPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(addStaffBtn)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addStaffBtn)
+                    .addComponent(deleteStaffBtn)
+                    .addComponent(updateStaffBtn)
+                    .addComponent(refreshBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,15 +181,71 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTfActionPerformed
 
+    private void deleteStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteStaffBtnActionPerformed
+            String username = usernameTf.getText();
+
+            if (Validator.isEmpty(username)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please enter username to delete!");
+                return;
+            }
+
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
+                "Are you sure you want to delete this staff?", 
+                "Confirm Delete", 
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+            if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                boolean success = admin.deleteStaff(username);
+
+                if (success) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Staff deleted successfully!");
+                    usernameTf.setText("");
+                    passwordTf.setText("");
+                    nameTf.setText("");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
+                }
+            }
+
+    }//GEN-LAST:event_deleteStaffBtnActionPerformed
+
+    private void updateStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStaffBtnActionPerformed
+            String username = usernameTf.getText();
+            String newName = nameTf.getText();
+
+            if (Validator.isEmpty(username) || Validator.isEmpty(newName)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please enter username and new name!");
+                return;
+            }
+
+            boolean success = admin.updateStaff(username, newName);
+
+            if (success) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Staff updated successfully!");
+                usernameTf.setText("");
+                passwordTf.setText("");
+                nameTf.setText("");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
+        }
+    }//GEN-LAST:event_updateStaffBtnActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        refreshData();
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStaffBtn;
+    private javax.swing.JButton deleteStaffBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTf;
     private javax.swing.JPasswordField passwordTf;
+    private javax.swing.JButton refreshBtn;
     private javax.swing.JTextArea staffListArea;
+    private javax.swing.JButton updateStaffBtn;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
