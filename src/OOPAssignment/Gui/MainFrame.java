@@ -35,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");   // ✅ 补上sharedAdmin
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
         // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
-        //cardPanel.add(new CounselorLoginPanel(), "counselor");
+        cardPanel.add(new CounselorLoginPanel(), "counselor");
         // cardPanel.add(new ReceptionistPanel(), "receptionist");
         // cardPanel.add(new StudentPanel(), "student");
 
