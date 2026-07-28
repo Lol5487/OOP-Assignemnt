@@ -3,21 +3,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package OOPAssignment.Gui;
-/**
- *
- * @author bosco
- */
+
+import OOPAssignment.model.Admin;
+import OOPAssignment.model.User;
+
 public class CounselorLoginPanel extends javax.swing.JPanel {
-    
+
     private MainFrame mainFrame;
-    private static final String COUNSELOR_USERNAME = "counselor1";
-    private static final String COUNSELOR_PASSWORD = "pass123";
-    
-    /**
-     * Creates new form CounselorLoginPanel
-     */
-    public CounselorLoginPanel() {
+    private Admin admin;
+
+    public CounselorLoginPanel(MainFrame mainFrame, Admin admin) {
         initComponents();
+        this.mainFrame = mainFrame;
+        this.admin = admin;
+
+        // Username栏按Enter,跳去Password栏
+        UsernameTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    PasswordTF.requestFocus();
+                }
+            }
+        });
+
+        // Password栏按Enter,直接登入
+        PasswordTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    LoginBTActionPerformed(null);
+                }
+            }
+        });
     }
 
     /**
@@ -106,17 +122,18 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
-        // TODO add your handling code here:
         String inputUsername = UsernameTF.getText();
         String inputPassword = PasswordTF.getText();
- 
-        boolean success = inputUsername.equals(COUNSELOR_USERNAME) && inputPassword.equals(COUNSELOR_PASSWORD);
- 
-        if (success) {
+
+        User foundStaff = admin.findStaffByUsername(inputUsername);
+
+        if (foundStaff != null && foundStaff.login(inputUsername, inputPassword)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+            mainFrame.showPanel("counselor");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
         }
+
     }//GEN-LAST:event_LoginBTActionPerformed
 
     private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTActionPerformed

@@ -171,6 +171,15 @@ public class Admin extends User{
     }
         return false;
         }
+    
+    public User findStaffByUsername(String username) {
+        for (int i = 0; i < staffCount; i++) {
+            if (staffList[i].getUsername().equals(username)) {
+                return staffList[i];
+            }
+        }
+        return null;
+    }
     public boolean isStaffExist(String name) {
     for (int i = 0; i < staffCount; i++) {
         if (staffList[i].getName().equalsIgnoreCase(name)) {

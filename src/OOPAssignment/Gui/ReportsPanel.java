@@ -3,11 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package OOPAssignment.Gui;
+
 import OOPAssignment.model.Admin;
-/**
- *
- * @author Asus
- */
+
 public class ReportsPanel extends javax.swing.JPanel {
 
     private Admin admin;
@@ -16,6 +14,7 @@ public class ReportsPanel extends javax.swing.JPanel {
         initComponents();
         this.admin = admin;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,29 +25,67 @@ public class ReportsPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        reportTypeCombo = new javax.swing.JComboBox<>();
+        generateBtn = new javax.swing.JButton();
 
-        jLabel1.setText("REPORT");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Generate Report");
+
+        reportTypeCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Monthly", "Quarterly", "Yearly" }));
+
+        generateBtn.setText("Generate Report");
+        generateBtn.addActionListener(this::generateBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(373, 373, 373)
-                .addComponent(jLabel1)
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(257, 257, 257)
+                            .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(generateBtn)))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(generateBtn)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
+        String type = (String) reportTypeCombo.getSelectedItem();
+
+        boolean success = admin.generateReport(type.toLowerCase());
+
+        if (success) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                type + " report generated successfully!\nSaved as: " + type.toLowerCase() + "_report.txt");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Failed to generate report!");
+        }
+    
+    }//GEN-LAST:event_generateBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> reportTypeCombo;
     // End of variables declaration//GEN-END:variables
 }

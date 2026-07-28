@@ -42,11 +42,13 @@ public class MenuPanel extends javax.swing.JPanel {
         adminBtn.addActionListener(this::adminBtnActionPerformed);
 
         counselorBtn.setText("Counselor");
+        counselorBtn.addActionListener(this::counselorBtnActionPerformed);
 
         receptionistBtn.setText("Receptionist");
         receptionistBtn.addActionListener(this::receptionistBtnActionPerformed);
 
         studentBtn.setText("Student");
+        studentBtn.addActionListener(this::studentBtnActionPerformed);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
 
@@ -92,8 +94,16 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_adminBtnActionPerformed
 
     private void receptionistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receptionistBtnActionPerformed
-        // TODO add your handling code here:
+        mainFrame.showPanel("receptionistLogin");
     }//GEN-LAST:event_receptionistBtnActionPerformed
+
+    private void counselorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counselorBtnActionPerformed
+        mainFrame.showPanel("counselorLogin");
+    }//GEN-LAST:event_counselorBtnActionPerformed
+
+    private void studentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentBtnActionPerformed
+        mainFrame.showPanel("studentLogin");
+    }//GEN-LAST:event_studentBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

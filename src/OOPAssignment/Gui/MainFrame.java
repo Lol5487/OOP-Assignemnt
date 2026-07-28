@@ -32,10 +32,10 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel = new JPanel(cardLayout);
 
         cardPanel.add(new MenuPanel(this), "menu");
-        cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");   // ✅ 补上sharedAdmin
+        cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
         // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
-        cardPanel.add(new CounselorLoginPanel(), "counselor");
+        cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
         // cardPanel.add(new ReceptionistPanel(), "receptionist");
         // cardPanel.add(new StudentPanel(), "student");
 
@@ -96,7 +96,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
-    
+    public void showCounselorPanel(OOPAssignment.model.User loggedInCounselor) {
+        cardPanel.add(new CounselorPanel(this, sharedAdmin, loggedInCounselor), "counselor");
+        cardLayout.show(cardPanel, "counselor");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
