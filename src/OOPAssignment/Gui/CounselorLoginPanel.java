@@ -17,7 +17,6 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         this.mainFrame = mainFrame;
         this.admin = admin;
 
-        // Username栏按Enter,跳去Password栏
         UsernameTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -26,7 +25,6 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
             }
         });
 
-        // Password栏按Enter,直接登入
         PasswordTF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -52,7 +50,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         LoginBT = new javax.swing.JButton();
         BackBT = new javax.swing.JButton();
         UsernameTF = new javax.swing.JTextField();
-        PasswordTF = new javax.swing.JTextField();
+        PasswordTF = new javax.swing.JPasswordField();
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
 
@@ -69,8 +67,6 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         BackBT.addActionListener(this::BackBTActionPerformed);
 
         UsernameTF.addActionListener(this::UsernameTFActionPerformed);
-
-        PasswordTF.addActionListener(this::PasswordTFActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,8 +86,8 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(UsernameTF)
-                            .addComponent(PasswordTF, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
+                            .addComponent(UsernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(PasswordTF)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(320, 320, 320)
                         .addComponent(LoginBT)
@@ -123,21 +119,19 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String inputUsername = UsernameTF.getText();
-        String inputPassword = PasswordTF.getText();
+       String inputPassword = PasswordTF.getText();
 
-        User foundStaff = admin.findStaffByUsername(inputUsername);
+       User foundStaff = admin.findStaffByUsername(inputUsername);
 
-        if (foundStaff != null && foundStaff.login(inputUsername, inputPassword)) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
-            mainFrame.showPanel("counselor");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
-        }
-
+       if (foundStaff != null && foundStaff.login(inputUsername, inputPassword)) {
+           javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+           mainFrame.showCounselorPanel(foundStaff);   // ✅ 改成呼叫这个,才会真的造出CounselorPanel并显示
+       } else {
+           javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
+       }
     }//GEN-LAST:event_LoginBTActionPerformed
 
     private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTActionPerformed
-        // TODO add your handling code here:
         mainFrame.showPanel("menu");
     }//GEN-LAST:event_BackBTActionPerformed
 
@@ -145,15 +139,11 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameTFActionPerformed
 
-    private void PasswordTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordTFActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBT;
     private javax.swing.JButton LoginBT;
-    private javax.swing.JTextField PasswordTF;
+    private javax.swing.JPasswordField PasswordTF;
     private javax.swing.JTextField UsernameTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

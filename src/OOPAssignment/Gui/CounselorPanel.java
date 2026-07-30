@@ -25,9 +25,9 @@ public class CounselorPanel extends javax.swing.JPanel {
         contentPanel.setLayout(innerCardLayout);
 
         contentPanel.add(new CounselorDashboardPanel(loggedInCounselor), "dashboard");
-        // 之后要加更多功能,一样加进来:
-        // contentPanel.add(new MyRosterPanel(admin, loggedInCounselor), "roster");
-        // contentPanel.add(new ConsultationRecordsPanel(...), "records");
+        contentPanel.add(new MyRosterPanel(admin, loggedInCounselor), "roster");
+        contentPanel.add(new MyAppointmentsPanel(loggedInCounselor), "appointments");
+        contentPanel.add(new ConsultationRecordsPanel(loggedInCounselor), "records");
 
         innerCardLayout.show(contentPanel, "dashboard");
     }
@@ -40,6 +40,10 @@ public class CounselorPanel extends javax.swing.JPanel {
         dashboardBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
+        appointmentsBtn = new javax.swing.JButton();
+        recordsBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        rosterBtn = new javax.swing.JButton();
 
         jLabel1.setText("Counselor");
 
@@ -49,16 +53,18 @@ public class CounselorPanel extends javax.swing.JPanel {
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
 
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
-        );
+        contentPanel.setLayout(new java.awt.CardLayout());
+
+        appointmentsBtn.setText("Appointments");
+        appointmentsBtn.addActionListener(this::appointmentsBtnActionPerformed);
+
+        recordsBtn.setText("Records");
+        recordsBtn.addActionListener(this::recordsBtnActionPerformed);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        rosterBtn.setText("Roster");
+        rosterBtn.addActionListener(this::rosterBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,27 +77,50 @@ public class CounselorPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logoutBtn)
-                            .addComponent(dashboardBtn))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 429, Short.MAX_VALUE)
+                        .addComponent(logoutBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(rosterBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(appointmentsBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dashboardBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(recordsBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 815, Short.MAX_VALUE)
                 .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(147, 147, 147)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(783, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(dashboardBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(43, 43, 43)
+                .addComponent(appointmentsBtn)
+                .addGap(43, 43, 43)
+                .addComponent(rosterBtn)
+                .addGap(65, 65, 65)
+                .addComponent(recordsBtn)
+                .addGap(115, 115, 115)
                 .addComponent(logoutBtn)
                 .addGap(32, 32, 32))
+            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(2, 2, 2)
+                    .addComponent(jSeparator1)
+                    .addGap(2, 2, 2)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,11 +132,27 @@ public class CounselorPanel extends javax.swing.JPanel {
         mainFrame.showPanel("menu");
     }//GEN-LAST:event_logoutBtnActionPerformed
 
+    private void appointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsBtnActionPerformed
+        innerCardLayout.show(contentPanel, "appointments");
+    }//GEN-LAST:event_appointmentsBtnActionPerformed
+
+    private void recordsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordsBtnActionPerformed
+        innerCardLayout.show(contentPanel, "records");
+    }//GEN-LAST:event_recordsBtnActionPerformed
+
+    private void rosterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rosterBtnActionPerformed
+        innerCardLayout.show(contentPanel, "roster");
+    }//GEN-LAST:event_rosterBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton appointmentsBtn;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JButton dashboardBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton recordsBtn;
+    private javax.swing.JButton rosterBtn;
     // End of variables declaration//GEN-END:variables
 }

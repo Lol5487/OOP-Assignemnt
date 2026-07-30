@@ -27,16 +27,16 @@ public class CounselorDashboardPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
+                .addGap(75, 75, 75)
                 .addComponent(welcomeLbl)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(550, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(53, 53, 53)
                 .addComponent(welcomeLbl)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(347, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

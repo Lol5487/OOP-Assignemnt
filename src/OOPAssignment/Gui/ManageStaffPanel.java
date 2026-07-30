@@ -43,6 +43,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         deleteStaffBtn = new javax.swing.JButton();
         updateStaffBtn = new javax.swing.JButton();
         refreshBtn = new javax.swing.JButton();
+        roleCombo = new javax.swing.JComboBox<>();
 
         usernameLabel.setText("Username: ");
 
@@ -72,53 +73,62 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(this::refreshBtnActionPerformed);
 
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Counselor", "Receptionist" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(usernameLabel)
-                                .addGap(50, 50, 50)
-                                .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(addStaffBtn)
-                        .addGap(33, 33, 33)
-                        .addComponent(updateStaffBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteStaffBtn)
-                        .addGap(121, 121, 121)
-                        .addComponent(refreshBtn)))
+                        .addGap(138, 138, 138)
+                        .addComponent(addStaffBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(roleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(usernameLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(updateStaffBtn)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(deleteStaffBtn))
+                                            .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(refreshBtn)
+                                .addGap(52, 52, 52)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(13, 13, 13)
+                .addComponent(roleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,8 +139,8 @@ public class ManageStaffPanel extends javax.swing.JPanel {
                     .addComponent(updateStaffBtn)
                     .addComponent(refreshBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,15 +152,14 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         String username = usernameTf.getText();
         String password = passwordTf.getText();
         String name = nameTf.getText();
+        String role = (String) roleCombo.getSelectedItem();
 
-        if (OOPAssignment.util.Validator.isEmpty(username) ||
-            OOPAssignment.util.Validator.isEmpty(password) ||
-            OOPAssignment.util.Validator.isEmpty(name)) {
+        if (Validator.isEmpty(username) || Validator.isEmpty(password) || Validator.isEmpty(name)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
             return;
         }
 
-        if (!OOPAssignment.util.Validator.isValidPassword(password)) {
+        if (!Validator.isValidPassword(password)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Password must be at least 6 characters!");
             return;
         }
@@ -160,7 +169,13 @@ public class ManageStaffPanel extends javax.swing.JPanel {
             return;
         }
 
-        OOPAssignment.model.Counselor newStaff = new OOPAssignment.model.Counselor(username, password, name);
+        OOPAssignment.model.User newStaff;
+        if (role.equals("Receptionist")) {
+            newStaff = new OOPAssignment.model.Receptionist(username, password, name);
+        } else {
+            newStaff = new OOPAssignment.model.Counselor(username, password, name);
+        }
+
         boolean success = admin.addStaff(newStaff);
 
         if (success) {
@@ -244,6 +259,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameTf;
     private javax.swing.JPasswordField passwordTf;
     private javax.swing.JButton refreshBtn;
+    private javax.swing.JComboBox<String> roleCombo;
     private javax.swing.JTextArea staffListArea;
     private javax.swing.JButton updateStaffBtn;
     private javax.swing.JLabel usernameLabel;

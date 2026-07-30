@@ -84,7 +84,21 @@ public class Student {
         }
         return null;
     }
- 
+    
+    public static String generateNextId() {
+    java.util.List<Student> all = loadAll();
+    return "S" + String.format("%03d", all.size() + 1);
+    }
+    
+    public static Student findByStudentId(String studentId) {
+    for (Student s : loadAll()) {
+        if (s.studentId != null && s.studentId.equalsIgnoreCase(studentId)) {
+            return s;
+        }
+    }
+    return null;
+    }
+    
     public static List<Student> loadAll() {
         List<Student> students = new ArrayList<>();
         File file = new File(FILE_PATH);
@@ -149,6 +163,25 @@ public class Student {
             System.err.println("Error writing student file: " + e.getMessage());
         }
     }
+    
+    public static boolean deleteByStudentId(String studentId) {
+        List<Student> all = loadAll();
+        Student toRemove = null;
+
+        for (Student s : all) {
+            if (s.studentId.equalsIgnoreCase(studentId)) {
+                toRemove = s;
+                break;
+            }
+        }
+
+        if (toRemove != null) {
+            all.remove(toRemove);
+            writeAll(all);
+            return true;
+        }
+        return false;
+    }
  
     // ---------- Appointment-related helpers (per assignment Student requirements) ----------
  
@@ -185,5 +218,17 @@ public class Student {
     public String getEmail() {
         return email;
     }
+    
+    public void setName(String name) {
+    this.name = name;
+}
+
+public void setPassword(String password) {
+    this.password = password;
+}
+
+public void setEmail(String email) {
+    this.email = email;
+}
 }
 

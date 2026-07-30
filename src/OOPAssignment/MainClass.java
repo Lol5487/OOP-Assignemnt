@@ -1,14 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package OOPAssignment;
 
-//import oopassignment.model.Admin;
 import OOPAssignment.Gui.MainFrame;
 
 public class MainClass {
     public static void main(String[] args) {
+
+        // 临时测试:造一个学生,跑一次就好
+        OOPAssignment.model.Student testStudent = new OOPAssignment.model.Student(
+            "S001", "Eeonn", "stud01", "stud123", "eeonn@student.apu.edu.my"
+        );
+        testStudent.save();
+
         MainFrame frame = new MainFrame();
         frame.setVisible(true);
     }

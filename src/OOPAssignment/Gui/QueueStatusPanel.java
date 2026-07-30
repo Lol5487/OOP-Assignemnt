@@ -4,22 +4,21 @@
  */
 package OOPAssignment.Gui;
 
-import OOPAssignment.model.Admin;
-import OOPAssignment.model.User;
+import OOPAssignment.model.Student;
 
-public class MyRosterPanel extends javax.swing.JPanel {
+public class QueueStatusPanel extends javax.swing.JPanel {
 
-    private Admin admin;
-    private User counselor;
-
-    public MyRosterPanel(Admin admin, User counselor) {
+    public QueueStatusPanel(Student student) {
         initComponents();
-        this.admin = admin;
-        this.counselor = counselor;
 
-        scheduleArea.setEditable(false);
-        scheduleArea.setText(admin.viewScheduleForStaff(counselor.getName()));
+        int queueNumber = student.getQueueNumber();
+        if (queueNumber == -1) {
+            queueLbl.setText("No queue number assigned yet.");
+        } else {
+            queueLbl.setText("Your queue number: " + queueNumber);
+        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,35 +28,30 @@ public class MyRosterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        scheduleArea = new javax.swing.JTextArea();
+        queueLbl = new javax.swing.JLabel();
 
-        scheduleArea.setEditable(false);
-        scheduleArea.setColumns(20);
-        scheduleArea.setRows(5);
-        jScrollPane1.setViewportView(scheduleArea);
+        queueLbl.setText("queue");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(404, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addComponent(queueLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(421, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(queueLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(380, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea scheduleArea;
+    private javax.swing.JLabel queueLbl;
     // End of variables declaration//GEN-END:variables
 }

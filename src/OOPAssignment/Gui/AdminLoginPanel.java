@@ -137,6 +137,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         boolean success = admin.login(inputUsername, inputPassword);
 
         if (success) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
             mainFrame.showPanel("admin");
         }else{
             javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");

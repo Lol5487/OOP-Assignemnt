@@ -4,18 +4,39 @@
  */
 package OOPAssignment.Gui;
 
-/**
- *
- * @author bosco
- */
+import OOPAssignment.model.ConsultationRecord;
+import OOPAssignment.model.User;
+import OOPAssignment.util.Validator;
+import java.util.List;
+
 public class ConsultationRecordsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ConsultationRecordsPanel
-     */
-    public ConsultationRecordsPanel() {
+    private User counselor;
+
+    public ConsultationRecordsPanel(User counselor) {
         initComponents();
+        this.counselor = counselor;
+
+        recordsArea.setEditable(false);
+        refreshData();
     }
+
+    private void refreshData() {
+        List<ConsultationRecord> records = ConsultationRecord.findByCounselor(counselor.getUsername());
+
+        String result = "=== My Consultation Records ===\n";
+        if (records.isEmpty()) {
+            result += "No records yet.\n";
+        } else {
+            for (ConsultationRecord r : records) {
+                result += r.getDate() + " - Student: " + r.getStudentUsername()
+                        + "\nNotes: " + r.getNotes()
+                        + "\nRecommendation: " + r.getRecommendation() + "\n\n";
+            }
+        }
+        recordsArea.setText(result);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +47,141 @@ public class ConsultationRecordsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        studentUsernameTf = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        notesTa = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        recommendationTa = new javax.swing.JTextArea();
+        saveRecordBtn = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        recordsArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        studentUsernameTf.setText("Username");
+
+        notesTa.setColumns(20);
+        notesTa.setRows(5);
+        jScrollPane1.setViewportView(notesTa);
+
+        recommendationTa.setColumns(20);
+        recommendationTa.setRows(5);
+        jScrollPane2.setViewportView(recommendationTa);
+
+        saveRecordBtn.setText("Save Record");
+        saveRecordBtn.addActionListener(this::saveRecordBtnActionPerformed);
+
+        recordsArea.setColumns(20);
+        recordsArea.setRows(5);
+        jScrollPane3.setViewportView(recordsArea);
+
+        jLabel1.setText("notes :");
+
+        jLabel2.setText("recommendation");
+
+        jLabel3.setText("Records");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 933, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(studentUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(68, 68, 68)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addComponent(jLabel2)))
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addGap(42, 42, 42)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(saveRecordBtn)))
+                .addContainerGap(575, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(studentUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(28, 28, 28)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveRecordBtn)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveRecordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveRecordBtnActionPerformed
+        String studentUsername = studentUsernameTf.getText();
+        String notes = notesTa.getText();
+        String recommendation = recommendationTa.getText();
+
+        if (Validator.isEmpty(studentUsername) || Validator.isEmpty(notes)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter student username and notes!");
+            return;
+        }
+
+        String recordId = ConsultationRecord.generateNextId();
+        String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+
+        ConsultationRecord record = new ConsultationRecord(recordId, studentUsername, counselor.getUsername(),
+                date, notes, recommendation);
+        record.save();
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Record saved successfully!");
+        studentUsernameTf.setText("");
+        notesTa.setText("");
+        recommendationTa.setText("");
+        refreshData();
+    }//GEN-LAST:event_saveRecordBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea notesTa;
+    private javax.swing.JTextArea recommendationTa;
+    private javax.swing.JTextArea recordsArea;
+    private javax.swing.JButton saveRecordBtn;
+    private javax.swing.JTextField studentUsernameTf;
     // End of variables declaration//GEN-END:variables
 }

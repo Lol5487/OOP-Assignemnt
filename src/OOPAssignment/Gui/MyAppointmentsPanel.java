@@ -4,17 +4,35 @@
  */
 package OOPAssignment.Gui;
 
-/**
- *
- * @author bosco
- */
+import OOPAssignment.model.Appointment;
+import OOPAssignment.model.User;
+import java.util.List;
+
 public class MyAppointmentsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MyAppointmentsPanel
-     */
-    public MyAppointmentsPanel() {
+    private User counselor;
+
+    public MyAppointmentsPanel(User counselor) {
         initComponents();
+        this.counselor = counselor;
+
+        appointmentsArea.setEditable(false);
+        refreshData();
+    }
+
+    private void refreshData() {
+        List<Appointment> myAppointments = Appointment.findByCounselor(counselor.getUsername());
+
+        String result = "=== My Appointments ===\n";
+        if (myAppointments.isEmpty()) {
+            result += "No appointments assigned yet.\n";
+        } else {
+            for (Appointment a : myAppointments) {
+                result += a.getDate() + " " + a.getTime() + " - Student: " + a.getStudentUsername()
+                        + " - Status: " + a.getStatus() + "\n";
+            }
+        }
+        appointmentsArea.setText(result);
     }
 
     /**
@@ -26,19 +44,49 @@ public class MyAppointmentsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        appointmentsArea = new javax.swing.JTextArea();
+        refreshBtn = new javax.swing.JButton();
+
+        appointmentsArea.setColumns(20);
+        appointmentsArea.setRows(5);
+        jScrollPane1.setViewportView(appointmentsArea);
+
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(this::refreshBtnActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 933, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(refreshBtn)
+                .addGap(119, 119, 119)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(refreshBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        refreshData();
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea appointmentsArea;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshBtn;
     // End of variables declaration//GEN-END:variables
 }

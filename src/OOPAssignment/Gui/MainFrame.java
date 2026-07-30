@@ -7,7 +7,6 @@ package OOPAssignment.Gui;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import OOPAssignment.model.Admin; 
-import OOPAssignment.model.Receptionist;
 
 /**
  *
@@ -20,14 +19,13 @@ public class MainFrame extends javax.swing.JFrame {
     private final CardLayout cardLayout;
     private final JPanel cardPanel;
     private Admin sharedAdmin;
-    private Receptionist sharedReceptionist;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-        
+
         sharedAdmin = new Admin("admin01", "adminpass", "Ali");
 
         cardLayout = new CardLayout();
@@ -36,15 +34,12 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(new MenuPanel(this), "menu");
         cardPanel.add(new AdminLoginPanel(this, sharedAdmin), "adminLogin");
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
-//        cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
-        cardPanel.add(new StudentLoginPanel(this, sharedReceptionist), "studentLogin"); 
-        // 之后Bosco/Bryan/Eeonn写好自己的panel,也一样加进来
+        cardPanel.add(new StudentLoginPanel(this), "studentLogin");
         cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
-        // cardPanel.add(new ReceptionistPanel(), "receptionist");
-        // cardPanel.add(new StudentPanel(), "student");
+        cardPanel.add(new ReceptionistLoginPanel(this, sharedAdmin), "receptionistLogin");   // 改成这行,加ReceptionistLoginPanel
 
-        getContentPane().removeAll();          // 清掉GroupLayout留下的空设置
-        getContentPane().setLayout(new java.awt.BorderLayout());  // 换成简单的Layout
+        getContentPane().removeAll();
+        getContentPane().setLayout(new java.awt.BorderLayout());
         getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
 
         setSize(933, 506);
@@ -58,9 +53,18 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout.show(cardPanel, name);
     }
     
-    public void showStudentPanel(OOPAssignment.model.User loggedInStudent) {
-        cardPanel.add(new StudentPanel(this, sharedReceptionist, loggedInStudent), "student");
+    public void showStudentPanel(OOPAssignment.model.Student loggedInStudent) {
+        cardPanel.add(new StudentPanel(this, sharedAdmin, loggedInStudent), "student");
         cardLayout.show(cardPanel, "student");
+    }
+    public void showCounselorPanel(OOPAssignment.model.User loggedInCounselor) {
+        cardPanel.add(new CounselorPanel(this, sharedAdmin, loggedInCounselor), "counselor");
+        cardLayout.show(cardPanel, "counselor");
+    }
+    
+    public void showReceptionistPanel(OOPAssignment.model.User loggedInReceptionist) {
+        cardPanel.add(new ReceptionistPanel(this, sharedAdmin, loggedInReceptionist), "receptionist");
+        cardLayout.show(cardPanel, "receptionist");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,10 +107,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
         java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
-    }
-    public void showCounselorPanel(OOPAssignment.model.User loggedInCounselor) {
-        cardPanel.add(new CounselorPanel(this, sharedAdmin, loggedInCounselor), "counselor");
-        cardLayout.show(cardPanel, "counselor");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

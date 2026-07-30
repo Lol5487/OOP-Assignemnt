@@ -133,36 +133,34 @@ public class Admin extends User{
             return false;
         }
     }
-    private void loadStaff() {
-    String[] lines = FileHandler.readAllLines("staff.txt");
+        private void loadStaff() {
+            String[] lines = FileHandler.readAllLines("staff.txt");
 
-    for (int i = 0; i < lines.length; i++) {
-        String[] parts = lines[i].split(",");
-    
-        if (parts.length < 4) {
-            continue;   // 资料格式不对,跳过这一行
+            for (int i = 0; i < lines.length; i++) {
+                String[] parts = lines[i].split(",");
+
+                if (parts.length < 4) {
+                    continue;
+                }
+                String username = parts[0];
+                String password = parts[1];
+                String name = parts[2];
+                String role = parts[3];
+
+                User staff = null;
+
+                if (role.equals("Counselor")) {
+                    staff = new Counselor(username, password, name);
+                } else if (role.equals("Receptionist")) {
+                    staff = new Receptionist(username, password, name);
+                }
+
+                if (staff != null && staffCount < staffList.length) {
+                    staffList[staffCount] = staff;
+                    staffCount++;
+                }
+            }
         }
-        String username = parts[0];
-        String password = parts[1];
-        String name = parts[2];
-        String role = parts[3];
-
-        User staff = null;
-
-        if (role.equals("Counselor")) {
-            staff = new Counselor(username, password, name);
-        }
-        // 之后Receptionist写好了,这里也加:
-        // else if (role.equals("Receptionist")) {
-        //     staff = new Receptionist(username, password, name);
-        // }
-
-        if (staff != null && staffCount < staffList.length) {
-            staffList[staffCount] = staff;
-            staffCount++;
-        }
-    }
-}
     public boolean isUsernameTaken(String username) {
     for (int i = 0; i < staffCount; i++) {
         if (staffList[i].getUsername().equals(username)) {
@@ -241,19 +239,36 @@ public class Admin extends User{
             System.out.println("Error rewriting staff file: " + e.getMessage());
         }
     }
-    private void rewriteStaffFile() {
-    try {
-            FileWriter fw = new FileWriter("staff.txt", false);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (int i = 0; i < staffCount; i++) {
-                String role = staffList[i].getClass().getSimpleName();
-                bw.write(staffList[i].getUsername() + "," + staffList[i].getPassword() + "," + staffList[i].getName() + "," + role);
-                bw.newLine();
+        private void rewriteStaffFile() {
+        try {
+                FileWriter fw = new FileWriter("staff.txt", false);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < staffCount; i++) {
+                    String role = staffList[i].getClass().getSimpleName();
+                    bw.write(staffList[i].getUsername() + "," + staffList[i].getPassword() + "," + staffList[i].getName() + "," + role);
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException e) {
+                System.out.println("Error rewriting staff file: " + e.getMessage());
             }
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Error rewriting staff file: " + e.getMessage());
         }
-    }
-    
+        public String viewScheduleForStaff(String staffName) {
+            String result = "=== Your Schedule ===\n";
+            boolean found = false;
+
+            
+
+            for (int i = 0; i < scheduleCount; i++) {
+
+                if (scheduleNames[i].equalsIgnoreCase(staffName)) {
+                    result += scheduleDays[i] + " from " + scheduleStartTimes[i] + " to " + scheduleEndTimes[i] + "\n";
+                    found = true;
+                }
+            }
+            if (!found) {
+                result += "No schedule assigned yet.\n";
+            }
+            return result;
+        }
 }

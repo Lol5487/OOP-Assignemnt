@@ -4,19 +4,16 @@
  */
 package OOPAssignment.Gui;
 
-import OOPAssignment.model.Receptionist;
-import OOPAssignment.model.User;
+import OOPAssignment.model.Student;
 
 public class StudentLoginPanel extends javax.swing.JPanel {
-    
-    private MainFrame mainFrame;
-    private Receptionist receptionist;
 
-    public StudentLoginPanel(MainFrame mainFrame, Receptionist receptionist) {
+    private MainFrame mainFrame;
+
+    public StudentLoginPanel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
-        this.receptionist = receptionist;
- 
+
         usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -24,7 +21,7 @@ public class StudentLoginPanel extends javax.swing.JPanel {
                 }
             }
         });
- 
+
         passwordTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -127,22 +124,21 @@ public class StudentLoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordTfActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-
         String inputUsername = usernameTf.getText();
         String inputPassword = passwordTf.getText();
- 
-        User foundStudent = receptionist.findStudentByUsername(inputUsername);
- 
-        if (foundStudent != null && foundStudent.login(inputUsername, inputPassword)) {
+
+        Student student = new Student();
+        boolean success = student.login(inputUsername, inputPassword);
+
+        if (success) {
             javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
-            mainFrame.showStudentPanel(foundStudent);
+            mainFrame.showStudentPanel(student);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-
         mainFrame.showPanel("menu");
     }//GEN-LAST:event_backBtnActionPerformed
 

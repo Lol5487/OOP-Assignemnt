@@ -32,8 +32,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="UsernameTF" max="32767" attributes="0"/>
-                          <Component id="PasswordTF" pref="214" max="32767" attributes="0"/>
+                          <Component id="UsernameTF" pref="214" max="32767" attributes="0"/>
+                          <Component id="PasswordTF" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -118,10 +118,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsernameTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="PasswordTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JPasswordField" name="PasswordTF">
     </Component>
   </SubComponents>
 </Form>

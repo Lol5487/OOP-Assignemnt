@@ -21,6 +21,9 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         private void refreshData() {
             totalStaffLbl.setText("Total staff: " + admin.getStaffCount());
             staffListArea.setText(admin.viewAllStaff());
+
+            totalAppointmentsLbl.setText("Total appointments: " + OOPAssignment.model.Appointment.getTotalCount()
+                + " (Pending: " + OOPAssignment.model.Appointment.getCountByStatus("Pending") + ")");
         }
 
     @SuppressWarnings("unchecked")
@@ -34,6 +37,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         staffListArea = new javax.swing.JTextArea();
+        totalAppointmentsLbl = new javax.swing.JLabel();
 
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(this::refreshBtnActionPerformed);
@@ -53,6 +57,8 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        totalAppointmentsLbl.setText("Total Appointment:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,6 +66,8 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(totalStaffLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addComponent(totalAppointmentsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshBtn)
                 .addGap(169, 169, 169))
@@ -89,7 +97,8 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalStaffLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshBtn))
+                    .addComponent(refreshBtn)
+                    .addComponent(totalAppointmentsLbl))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -106,6 +115,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshBtn;
     private javax.swing.JTextArea staffListArea;
+    private javax.swing.JLabel totalAppointmentsLbl;
     private javax.swing.JLabel totalStaffLbl;
     // End of variables declaration//GEN-END:variables
 }
