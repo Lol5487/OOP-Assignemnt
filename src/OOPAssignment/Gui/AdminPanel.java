@@ -52,7 +52,6 @@ public class AdminPanel extends javax.swing.JPanel {
         rosterBtn = new javax.swing.JButton();
         dashboardBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         contentPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         reportBtn = new javax.swing.JButton();
@@ -115,10 +114,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.CardLayout());
         add(jPanel3);
         jPanel3.setBounds(909, 514, 0, 0);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator1);
-        jSeparator1.setBounds(164, 6, 10, 502);
 
         contentPanel.setMaximumSize(new java.awt.Dimension(808, 500));
 
@@ -207,7 +202,6 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton manageStaffBtn;
     private javax.swing.JButton reportBtn;
