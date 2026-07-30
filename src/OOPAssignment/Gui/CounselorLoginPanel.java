@@ -6,6 +6,7 @@ package OOPAssignment.Gui;
 
 import OOPAssignment.model.Admin;
 import OOPAssignment.model.User;
+import OOPAssignment.model.Counselor;
 
 public class CounselorLoginPanel extends javax.swing.JPanel {
 
@@ -118,17 +119,18 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
-        String inputUsername = UsernameTF.getText();
-       String inputPassword = PasswordTF.getText();
+    String inputUsername = UsernameTF.getText();
+    String inputPassword = PasswordTF.getText();
 
-       User foundStaff = admin.findStaffByUsername(inputUsername);
+    User foundStaff = admin.findStaffByUsername(inputUsername);
 
-       if (foundStaff != null && foundStaff.login(inputUsername, inputPassword)) {
-           javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
-           mainFrame.showCounselorPanel(foundStaff);   // ✅ 改成呼叫这个,才会真的造出CounselorPanel并显示
-       } else {
-           javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
-       }
+    if (foundStaff != null && foundStaff.login(inputUsername, inputPassword) 
+            && foundStaff instanceof Counselor) {   // 加这个检查
+        javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+        mainFrame.showCounselorPanel(foundStaff);
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
+    }
     }//GEN-LAST:event_LoginBTActionPerformed
 
     private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTActionPerformed
