@@ -19,10 +19,10 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         }
 
         private void refreshData() {
-            totalStaffLbl.setText("Total staff: " + admin.getStaffCount());
+            totalStaffLbl.setText(String.valueOf(admin.getStaffCount()));
             staffListArea.setText(admin.viewAllStaff());
 
-            totalAppointmentsLbl.setText("Total appointments: " + OOPAssignment.model.Appointment.getTotalCount()
+            totalAppointmentsLbl.setText(OOPAssignment.model.Appointment.getTotalCount()
                 + " (Pending: " + OOPAssignment.model.Appointment.getCountByStatus("Pending") + ")");
         }
 
@@ -31,76 +31,60 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         refreshBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         totalStaffLbl = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        totalAppointmentsLbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         staffListArea = new javax.swing.JTextArea();
-        totalAppointmentsLbl = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        refreshBtn.setText("Refresh");
+        setLayout(null);
+
+        refreshBtn.setContentAreaFilled(false);
         refreshBtn.addActionListener(this::refreshBtnActionPerformed);
+        add(refreshBtn);
+        refreshBtn.setBounds(622, 190, 90, 30);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Dashboard Overview");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Stafflist");
-
+        totalStaffLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalStaffLbl.setForeground(new java.awt.Color(51, 204, 255));
         totalStaffLbl.setText("Total");
+        add(totalStaffLbl);
+        totalStaffLbl.setBounds(70, 120, 80, 30);
+
+        totalAppointmentsLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalAppointmentsLbl.setForeground(new java.awt.Color(102, 255, 153));
+        totalAppointmentsLbl.setText("Total Appointment:");
+        add(totalAppointmentsLbl);
+        totalAppointmentsLbl.setBounds(300, 120, 180, 30);
 
         staffListArea.setEditable(false);
+        staffListArea.setBackground(new java.awt.Color(20, 20, 22));
         staffListArea.setColumns(20);
+        staffListArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        staffListArea.setForeground(new java.awt.Color(204, 204, 204));
         staffListArea.setRows(5);
+        staffListArea.setText("sdasdwadsad");
+        staffListArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        staffListArea.setFocusTraversalPolicyProvider(true);
+        staffListArea.setName(""); // NOI18N
+        staffListArea.setOpaque(false);
+        staffListArea.setRequestFocusEnabled(false);
+        staffListArea.setSelectionColor(new java.awt.Color(20, 20, 22));
         jScrollPane1.setViewportView(staffListArea);
 
-        jScrollPane2.setViewportView(jScrollPane1);
+        add(jScrollPane1);
+        jScrollPane1.setBounds(50, 220, 670, 250);
 
-        totalAppointmentsLbl.setText("Total Appointment:");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel2.setText("3");
+        add(jLabel2);
+        jLabel2.setBounds(530, 120, 20, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(totalStaffLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(totalAppointmentsLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshBtn)
-                .addGap(169, 169, 169))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))))
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalStaffLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshBtn)
-                    .addComponent(totalAppointmentsLbl))
-                .addContainerGap(101, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/AdminDashboard（1）.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(-170, -70, 950, 640);
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
@@ -112,7 +96,6 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshBtn;
     private javax.swing.JTextArea staffListArea;
     private javax.swing.JLabel totalAppointmentsLbl;

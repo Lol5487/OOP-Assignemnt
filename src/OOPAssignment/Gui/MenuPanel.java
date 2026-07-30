@@ -29,69 +29,39 @@ public class MenuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        adminBtn = new javax.swing.JButton();
         counselorBtn = new javax.swing.JButton();
         receptionistBtn = new javax.swing.JButton();
+        adminBtn = new javax.swing.JButton();
         studentBtn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("Counseling Management System");
+        setLayout(null);
 
-        adminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
-        adminBtn.addActionListener(this::adminBtnActionPerformed);
-
-        counselorBtn.setText("Counselor");
+        counselorBtn.setContentAreaFilled(false);
         counselorBtn.addActionListener(this::counselorBtnActionPerformed);
+        add(counselorBtn);
+        counselorBtn.setBounds(300, 290, 140, 30);
 
-        receptionistBtn.setText("Receptionist");
+        receptionistBtn.setContentAreaFilled(false);
         receptionistBtn.addActionListener(this::receptionistBtnActionPerformed);
+        add(receptionistBtn);
+        receptionistBtn.setBounds(495, 293, 130, 30);
 
-        studentBtn.setText("Student");
+        adminBtn.setBackground(java.awt.SystemColor.windowBorder);
+        adminBtn.setContentAreaFilled(false);
+        adminBtn.addActionListener(this::adminBtnActionPerformed);
+        add(adminBtn);
+        adminBtn.setBounds(110, 290, 140, 30);
+
+        studentBtn.setContentAreaFilled(false);
         studentBtn.addActionListener(this::studentBtnActionPerformed);
+        add(studentBtn);
+        studentBtn.setBounds(680, 290, 140, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(adminBtn)
-                        .addGap(90, 90, 90)
-                        .addComponent(counselorBtn)
-                        .addGap(73, 73, 73)
-                        .addComponent(receptionistBtn)))
-                .addGap(94, 94, 94)
-                .addComponent(studentBtn)
-                .addContainerGap(175, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminBtn)
-                    .addComponent(studentBtn)
-                    .addComponent(counselorBtn)
-                    .addComponent(receptionistBtn))
-                .addContainerGap(316, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Screenshot 2026-07-30 223329.png"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(-3, -4, 940, 510);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void adminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBtnActionPerformed
-        mainFrame.showPanel("adminLogin");
-    }//GEN-LAST:event_adminBtnActionPerformed
 
     private void receptionistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receptionistBtnActionPerformed
         mainFrame.showPanel("receptionistLogin");
@@ -105,12 +75,15 @@ public class MenuPanel extends javax.swing.JPanel {
         mainFrame.showPanel("studentLogin");
     }//GEN-LAST:event_studentBtnActionPerformed
 
+    private void adminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBtnActionPerformed
+        mainFrame.showPanel("adminLogin");
+    }//GEN-LAST:event_adminBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminBtn;
     private javax.swing.JButton counselorBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton receptionistBtn;
     private javax.swing.JButton studentBtn;
     // End of variables declaration//GEN-END:variables

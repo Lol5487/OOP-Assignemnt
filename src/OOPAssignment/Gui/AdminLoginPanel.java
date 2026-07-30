@@ -46,80 +46,50 @@ public class AdminLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         usernameTf = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         passwordTf = new javax.swing.JPasswordField();
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        jLabel1.setText("Admin Login");
+        setLayout(null);
 
-        jLabel2.setText("Username:");
-
+        usernameTf.setBackground(new java.awt.Color(42, 42, 42));
+        usernameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usernameTf.setForeground(new java.awt.Color(204, 204, 204));
+        usernameTf.setActionCommand("<Not Set>");
+        usernameTf.setBorder(null);
+        usernameTf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usernameTf.addActionListener(this::usernameTfActionPerformed);
+        add(usernameTf);
+        usernameTf.setBounds(381, 190, 210, 30);
 
-        jLabel3.setText("Password:");
-
+        passwordTf.setBackground(new java.awt.Color(42, 42, 42));
+        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passwordTf.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        passwordTf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         passwordTf.addActionListener(this::passwordTfActionPerformed);
+        add(passwordTf);
+        passwordTf.setBounds(380, 270, 210, 30);
 
-        loginBtn.setText("Login");
+        loginBtn.setContentAreaFilled(false);
         loginBtn.addActionListener(this::loginBtnActionPerformed);
+        add(loginBtn);
+        loginBtn.setBounds(340, 360, 80, 30);
 
-        backBtn.setText("Back");
+        backBtn.setContentAreaFilled(false);
         backBtn.addActionListener(this::backBtnActionPerformed);
+        add(backBtn);
+        backBtn.setBounds(512, 360, 90, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(0, 0, 110, 100);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addComponent(jLabel5))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                    .addComponent(passwordTf)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(317, Short.MAX_VALUE)
-                .addComponent(loginBtn)
-                .addGap(70, 70, 70)
-                .addComponent(backBtn)
-                .addGap(402, 402, 402))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1))
-                .addGap(96, 96, 96)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginBtn)
-                    .addComponent(backBtn))
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Admin Login.png"))); // NOI18N
+        add(jLabel3);
+        jLabel3.setBounds(0, -6, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTfActionPerformed
@@ -152,8 +122,6 @@ public class AdminLoginPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton loginBtn;

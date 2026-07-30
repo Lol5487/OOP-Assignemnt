@@ -49,7 +49,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        manageStaffBtn = new javax.swing.JButton();
         rosterBtn = new javax.swing.JButton();
         dashboardBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -58,6 +57,8 @@ public class AdminPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         reportBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
+        manageStaffBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -99,19 +100,25 @@ public class AdminPanel extends javax.swing.JPanel {
         );
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLayout(null);
 
-        manageStaffBtn.setText("Manage Staff");
-        manageStaffBtn.addActionListener(this::manageStaffBtnActionPerformed);
-
-        rosterBtn.setText("Roster/Schedule");
+        rosterBtn.setContentAreaFilled(false);
         rosterBtn.addActionListener(this::rosterBtnActionPerformed);
+        add(rosterBtn);
+        rosterBtn.setBounds(20, 250, 140, 30);
 
-        dashboardBtn.setText("Dashboard");
+        dashboardBtn.setContentAreaFilled(false);
         dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn);
+        dashboardBtn.setBounds(20, 143, 140, 40);
 
         jPanel3.setLayout(new java.awt.CardLayout());
+        add(jPanel3);
+        jPanel3.setBounds(909, 514, 0, 0);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator1);
+        jSeparator1.setBounds(164, 6, 10, 502);
 
         contentPanel.setMaximumSize(new java.awt.Dimension(808, 500));
 
@@ -119,81 +126,38 @@ public class AdminPanel extends javax.swing.JPanel {
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
+
+        add(contentPanel);
+        contentPanel.setBounds(167, 0, 770, 500);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(30, 20, 110, 100);
 
-        reportBtn.setText("Reports");
+        reportBtn.setContentAreaFilled(false);
         reportBtn.addActionListener(this::reportBtnActionPerformed);
+        add(reportBtn);
+        reportBtn.setBounds(22, 303, 130, 30);
 
-        logoutBtn.setText("Logout");
+        logoutBtn.setContentAreaFilled(false);
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+        add(logoutBtn);
+        logoutBtn.setBounds(20, 433, 140, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(dashboardBtn)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(logoutBtn)
-                                    .addComponent(reportBtn))))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(manageStaffBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rosterBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 772, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(26, 26, 26)
-                        .addComponent(dashboardBtn)
-                        .addGap(27, 27, 27)
-                        .addComponent(manageStaffBtn)
-                        .addGap(37, 37, 37)
-                        .addComponent(rosterBtn)
-                        .addGap(31, 31, 31)
-                        .addComponent(reportBtn)
-                        .addGap(45, 45, 45)
-                        .addComponent(logoutBtn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        manageStaffBtn.setContentAreaFilled(false);
+        manageStaffBtn.addActionListener(this::manageStaffBtnActionPerformed);
+        add(manageStaffBtn);
+        manageStaffBtn.setBounds(20, 193, 140, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/AdminDashboard（1）.png"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, -10, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
@@ -237,6 +201,7 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
