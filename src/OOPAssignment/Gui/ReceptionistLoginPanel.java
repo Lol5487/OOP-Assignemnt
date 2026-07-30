@@ -7,6 +7,7 @@ package OOPAssignment.Gui;
 
 import OOPAssignment.model.Admin;
 import OOPAssignment.model.User;
+import OOPAssignment.model.Receptionist;
 
 public class ReceptionistLoginPanel extends javax.swing.JPanel {
 
@@ -156,18 +157,18 @@ public class ReceptionistLoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordTfActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        String inputUsername = usernameTf.getText();
-        String inputPassword = passwordTf.getText();
+    String inputUsername = usernameTf.getText();
+    String inputPassword = passwordTf.getText();
 
-        User foundStaff = admin.findStaffByUsername(inputUsername);
+    User foundStaff = admin.findStaffByUsername(inputUsername);
 
-        if (foundStaff != null && foundStaff.login(inputUsername, inputPassword)) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
-            mainFrame.showReceptionistPanel(foundStaff);
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
-        }
-
+    if (foundStaff != null && foundStaff.login(inputUsername, inputPassword) 
+            && foundStaff instanceof Receptionist) {   // 加这个检查
+        javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
+        mainFrame.showReceptionistPanel(foundStaff);
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Wrong username or password!");
+    }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
