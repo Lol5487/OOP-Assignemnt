@@ -45,45 +45,52 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LoginBT = new javax.swing.JButton();
         BackBT = new javax.swing.JButton();
         UsernameTF = new javax.swing.JTextField();
         PasswordTF = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("Counselor Login");
+
+        jLabel2.setText("jLabel2");
 
         setLayout(null);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
         add(jLabel5);
-        jLabel5.setBounds(270, 20, 110, 100);
+        jLabel5.setBounds(60, 260, 140, 140);
 
+        LoginBT.setText("login");
         LoginBT.setContentAreaFilled(false);
         LoginBT.addActionListener(this::LoginBTActionPerformed);
         add(LoginBT);
-        LoginBT.setBounds(270, 340, 360, 40);
+        LoginBT.setBounds(440, 340, 400, 40);
 
+        BackBT.setText("back");
         BackBT.setContentAreaFilled(false);
         BackBT.addActionListener(this::BackBTActionPerformed);
         add(BackBT);
-        BackBT.setBounds(270, 390, 360, 40);
+        BackBT.setBounds(440, 390, 400, 40);
 
-        UsernameTF.setBackground(new java.awt.Color(51, 51, 51));
+        UsernameTF.setBackground(new java.awt.Color(46, 51, 61));
         UsernameTF.setBorder(null);
         UsernameTF.addActionListener(this::UsernameTFActionPerformed);
         add(UsernameTF);
-        UsernameTF.setBounds(270, 210, 360, 40);
+        UsernameTF.setBounds(430, 200, 410, 50);
 
-        PasswordTF.setBackground(new java.awt.Color(51, 51, 51));
+        PasswordTF.setBackground(new java.awt.Color(46, 51, 61));
         PasswordTF.setBorder(null);
+        PasswordTF.addActionListener(this::PasswordTFActionPerformed);
         add(PasswordTF);
-        PasswordTF.setBounds(270, 280, 360, 40);
+        PasswordTF.setBounds(430, 270, 410, 50);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselorloginpanel.png"))); // NOI18N
-        add(jLabel4);
-        jLabel4.setBounds(240, 0, 930, 510);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_login_preview.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 940, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
@@ -109,6 +116,10 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameTFActionPerformed
 
+    private void PasswordTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordTFActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBT;
@@ -116,7 +127,8 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField PasswordTF;
     private javax.swing.JTextField UsernameTF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
