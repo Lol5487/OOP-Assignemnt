@@ -77,13 +77,13 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         UsernameTF.setBorder(null);
         UsernameTF.addActionListener(this::UsernameTFActionPerformed);
         add(UsernameTF);
-        UsernameTF.setBounds(430, 200, 410, 50);
+        UsernameTF.setBounds(430, 190, 420, 60);
 
         PasswordTF.setBackground(new java.awt.Color(46, 51, 61));
         PasswordTF.setBorder(null);
         PasswordTF.addActionListener(this::PasswordTFActionPerformed);
         add(PasswordTF);
-        PasswordTF.setBounds(430, 270, 410, 50);
+        PasswordTF.setBounds(430, 270, 420, 60);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_login_preview.png"))); // NOI18N
         jLabel3.setText("jLabel3");
