@@ -24,7 +24,6 @@ public class AdminPanel extends javax.swing.JPanel {
 
         innerCardLayout = new CardLayout();
         contentPanel.setLayout(innerCardLayout);
-
         contentPanel.add(new AdminDashboardPanel(admin), "dashboard");
         contentPanel.add(new ManageStaffPanel(admin), "manageStaff");
         contentPanel.add(new RosterPanel(admin), "roster");
@@ -156,35 +155,23 @@ public class AdminPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
-
         innerCardLayout.show(contentPanel, "manageStaff");
     }//GEN-LAST:event_manageStaffBtnActionPerformed
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
         innerCardLayout.show(contentPanel, "dashboard");
-        
-        
-
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
     private void rosterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rosterBtnActionPerformed
         innerCardLayout.show(contentPanel, "roster");
-        
-        
-        
-        
     }//GEN-LAST:event_rosterBtnActionPerformed
 
     private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
-        innerCardLayout.show(contentPanel, "reports");
-        
-        
-        
+        innerCardLayout.show(contentPanel, "reports");       
     }//GEN-LAST:event_reportBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
             mainFrame.showPanel("menu");
-
     }//GEN-LAST:event_logoutBtnActionPerformed
 
 
