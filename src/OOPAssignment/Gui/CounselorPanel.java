@@ -81,8 +81,9 @@ public class CounselorPanel extends javax.swing.JPanel {
         rosterBtn.setBounds(20, 180, 180, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_dashboard_preview.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(0, 10, 933, 500);
+        jLabel2.setBounds(0, 0, 940, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
