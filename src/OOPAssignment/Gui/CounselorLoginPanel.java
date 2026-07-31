@@ -63,13 +63,11 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(60, 260, 140, 140);
 
-        LoginBT.setText("login");
         LoginBT.setContentAreaFilled(false);
         LoginBT.addActionListener(this::LoginBTActionPerformed);
         add(LoginBT);
         LoginBT.setBounds(440, 340, 400, 40);
 
-        BackBT.setText("back");
         BackBT.setContentAreaFilled(false);
         BackBT.addActionListener(this::BackBTActionPerformed);
         add(BackBT);
