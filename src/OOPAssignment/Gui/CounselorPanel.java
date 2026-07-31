@@ -36,7 +36,6 @@ public class CounselorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         dashboardBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
@@ -44,84 +43,46 @@ public class CounselorPanel extends javax.swing.JPanel {
         recordsBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         rosterBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("Counselor");
+        setLayout(null);
 
-        dashboardBtn.setText("Dashboard");
+        dashboardBtn.setContentAreaFilled(false);
         dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn);
+        dashboardBtn.setBounds(20, 70, 180, 40);
 
-        logoutBtn.setText("Logout");
+        logoutBtn.setContentAreaFilled(false);
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+        add(logoutBtn);
+        logoutBtn.setBounds(20, 430, 180, 50);
 
         contentPanel.setLayout(new java.awt.CardLayout());
+        add(contentPanel);
+        contentPanel.setBounds(927, 0, 0, 506);
 
-        appointmentsBtn.setText("Appointments");
+        appointmentsBtn.setContentAreaFilled(false);
         appointmentsBtn.addActionListener(this::appointmentsBtnActionPerformed);
+        add(appointmentsBtn);
+        appointmentsBtn.setBounds(20, 120, 180, 50);
 
-        recordsBtn.setText("Records");
+        recordsBtn.setContentAreaFilled(false);
         recordsBtn.addActionListener(this::recordsBtnActionPerformed);
+        add(recordsBtn);
+        recordsBtn.setBounds(20, 240, 180, 40);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator1);
+        jSeparator1.setBounds(147, 2, 3, 502);
 
-        rosterBtn.setText("Roster");
+        rosterBtn.setContentAreaFilled(false);
         rosterBtn.addActionListener(this::rosterBtnActionPerformed);
+        add(rosterBtn);
+        rosterBtn.setBounds(20, 180, 180, 50);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(logoutBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(rosterBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(appointmentsBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(dashboardBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(recordsBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 815, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(147, 147, 147)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(783, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(dashboardBtn)
-                .addGap(43, 43, 43)
-                .addComponent(appointmentsBtn)
-                .addGap(43, 43, 43)
-                .addComponent(rosterBtn)
-                .addGap(65, 65, 65)
-                .addComponent(recordsBtn)
-                .addGap(115, 115, 115)
-                .addComponent(logoutBtn)
-                .addGap(32, 32, 32))
-            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(2, 2, 2)
-                    .addComponent(jSeparator1)
-                    .addGap(2, 2, 2)))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_dashboard_preview.png"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, 10, 933, 500);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
@@ -149,7 +110,7 @@ public class CounselorPanel extends javax.swing.JPanel {
     private javax.swing.JButton appointmentsBtn;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JButton dashboardBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton recordsBtn;
