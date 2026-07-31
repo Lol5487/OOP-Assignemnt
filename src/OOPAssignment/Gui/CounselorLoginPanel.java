@@ -44,78 +44,46 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         LoginBT = new javax.swing.JButton();
         BackBT = new javax.swing.JButton();
         UsernameTF = new javax.swing.JTextField();
         PasswordTF = new javax.swing.JPasswordField();
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("Counselor Login");
 
-        jLabel2.setText("Username:");
+        setLayout(null);
 
-        jLabel3.setText("Password:");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(270, 20, 110, 100);
 
-        LoginBT.setText("Login");
+        LoginBT.setContentAreaFilled(false);
         LoginBT.addActionListener(this::LoginBTActionPerformed);
+        add(LoginBT);
+        LoginBT.setBounds(270, 340, 360, 40);
 
-        BackBT.setText("Back");
+        BackBT.setContentAreaFilled(false);
         BackBT.addActionListener(this::BackBTActionPerformed);
+        add(BackBT);
+        BackBT.setBounds(270, 390, 360, 40);
 
+        UsernameTF.setBackground(new java.awt.Color(51, 51, 51));
+        UsernameTF.setBorder(null);
         UsernameTF.addActionListener(this::UsernameTFActionPerformed);
+        add(UsernameTF);
+        UsernameTF.setBounds(270, 210, 360, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(432, 432, 432))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(105, 105, 105)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(UsernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(PasswordTF)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(LoginBT)
-                        .addGap(138, 138, 138)
-                        .addComponent(BackBT)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(UsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(PasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginBT)
-                    .addComponent(BackBT))
-                .addGap(0, 185, Short.MAX_VALUE))
-        );
+        PasswordTF.setBackground(new java.awt.Color(51, 51, 51));
+        PasswordTF.setBorder(null);
+        add(PasswordTF);
+        PasswordTF.setBounds(270, 280, 360, 40);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselorloginpanel.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(240, 0, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
@@ -148,8 +116,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField PasswordTF;
     private javax.swing.JTextField UsernameTF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
