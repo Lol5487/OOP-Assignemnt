@@ -24,48 +24,31 @@ public class ReportsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         reportTypeCombo = new javax.swing.JComboBox<>();
         generateBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(null);
+
+        reportTypeCombo.setBackground(new java.awt.Color(34, 34, 38));
+        reportTypeCombo.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
+        reportTypeCombo.setForeground(new java.awt.Color(204, 204, 204));
+        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Monthly", "Quarterly", "Yearly" }));
+        reportTypeCombo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(reportTypeCombo);
+        reportTypeCombo.setBounds(50, 110, 170, 30);
+
+        generateBtn.setContentAreaFilled(false);
+        generateBtn.addActionListener(this::generateBtnActionPerformed);
+        add(generateBtn);
+        generateBtn.setBounds(60, 143, 240, 30);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Generate Report");
-
-        reportTypeCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Monthly", "Quarterly", "Yearly" }));
-
-        generateBtn.setText("Generate Report");
-        generateBtn.addActionListener(this::generateBtnActionPerformed);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(45, 45, 45)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(257, 257, 257)
-                            .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(generateBtn)))
-                .addContainerGap(435, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(reportTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(generateBtn)
-                .addContainerGap(306, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/AdminManageStaff.png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(932, 507));
+        jLabel1.setMinimumSize(new java.awt.Dimension(932, 507));
+        add(jLabel1);
+        jLabel1.setBounds(-170, 0, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed

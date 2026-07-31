@@ -42,7 +42,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.BorderLayout());
         getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
 
-        setSize(933, 539);
+        setSize(933, 537);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         cardLayout.show(cardPanel, "menu");
         revalidate();

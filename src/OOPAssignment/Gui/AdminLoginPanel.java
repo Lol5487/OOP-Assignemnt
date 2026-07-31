@@ -63,7 +63,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         usernameTf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usernameTf.addActionListener(this::usernameTfActionPerformed);
         add(usernameTf);
-        usernameTf.setBounds(381, 190, 210, 30);
+        usernameTf.setBounds(390, 195, 200, 20);
 
         passwordTf.setBackground(new java.awt.Color(42, 42, 42));
         passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -71,7 +71,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         passwordTf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         passwordTf.addActionListener(this::passwordTfActionPerformed);
         add(passwordTf);
-        passwordTf.setBounds(380, 270, 210, 30);
+        passwordTf.setBounds(390, 273, 200, 20);
 
         loginBtn.setContentAreaFilled(false);
         loginBtn.addActionListener(this::loginBtnActionPerformed);
@@ -87,7 +87,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(0, 0, 110, 100);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Admin Login.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/admin_login_dark_933x506 1.png"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(0, -6, 930, 510);
     }// </editor-fold>//GEN-END:initComponents

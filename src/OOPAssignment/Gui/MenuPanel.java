@@ -58,7 +58,7 @@ public class MenuPanel extends javax.swing.JPanel {
         add(studentBtn);
         studentBtn.setBounds(680, 290, 140, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Screenshot 2026-07-30 223329.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/menu_panel_correct_colors 1.png"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(-3, -4, 940, 510);
     }// </editor-fold>//GEN-END:initComponents

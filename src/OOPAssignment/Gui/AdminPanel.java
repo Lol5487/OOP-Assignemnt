@@ -19,6 +19,7 @@ public class AdminPanel extends javax.swing.JPanel {
     
     public AdminPanel(MainFrame mainFrame, Admin admin) {
         initComponents();
+        ManageStaffLbl.setVisible(false);
         this.mainFrame = mainFrame;
         this.admin = admin;
 
@@ -56,7 +57,10 @@ public class AdminPanel extends javax.swing.JPanel {
         reportBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         manageStaffBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        DashBoardLbl = new javax.swing.JLabel();
+        ManageStaffLbl = new javax.swing.JLabel();
+        RosterPanelLbl = new javax.swing.JLabel();
+        ReportPanelLbl = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -108,7 +112,7 @@ public class AdminPanel extends javax.swing.JPanel {
         dashboardBtn.setContentAreaFilled(false);
         dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
         add(dashboardBtn);
-        dashboardBtn.setBounds(20, 143, 140, 40);
+        dashboardBtn.setBounds(20, 140, 140, 40);
 
         jPanel3.setLayout(new java.awt.CardLayout());
         add(jPanel3);
@@ -137,37 +141,66 @@ public class AdminPanel extends javax.swing.JPanel {
         reportBtn.setContentAreaFilled(false);
         reportBtn.addActionListener(this::reportBtnActionPerformed);
         add(reportBtn);
-        reportBtn.setBounds(22, 303, 130, 30);
+        reportBtn.setBounds(20, 300, 130, 30);
 
         logoutBtn.setContentAreaFilled(false);
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
         add(logoutBtn);
-        logoutBtn.setBounds(20, 433, 140, 40);
+        logoutBtn.setBounds(20, 440, 140, 40);
 
         manageStaffBtn.setContentAreaFilled(false);
         manageStaffBtn.addActionListener(this::manageStaffBtnActionPerformed);
         add(manageStaffBtn);
-        manageStaffBtn.setBounds(20, 193, 140, 40);
+        manageStaffBtn.setBounds(20, 200, 140, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/AdminDashboard（1）.png"))); // NOI18N
-        add(jLabel2);
-        jLabel2.setBounds(0, -10, 930, 510);
+        DashBoardLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Admin Dashboard.png"))); // NOI18N
+        add(DashBoardLbl);
+        DashBoardLbl.setBounds(0, -10, 930, 510);
+
+        ManageStaffLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/ManageStaff(1).png"))); // NOI18N
+        add(ManageStaffLbl);
+        ManageStaffLbl.setBounds(0, -10, 930, 510);
+
+        RosterPanelLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/roster_schedule_clear 2.png"))); // NOI18N
+        add(RosterPanelLbl);
+        RosterPanelLbl.setBounds(0, -10, 930, 510);
+
+        ReportPanelLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/generate_report_charts 1 (1).png"))); // NOI18N
+        ReportPanelLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(ReportPanelLbl);
+        ReportPanelLbl.setBounds(0, -10, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
         innerCardLayout.show(contentPanel, "manageStaff");
+        ManageStaffLbl.setVisible(true);
+        DashBoardLbl.setVisible(false);
+        RosterPanelLbl.setVisible(false);
+        ReportPanelLbl.setVisible(false);
     }//GEN-LAST:event_manageStaffBtnActionPerformed
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
         innerCardLayout.show(contentPanel, "dashboard");
+        ManageStaffLbl.setVisible(false);
+        DashBoardLbl.setVisible(true);
+        RosterPanelLbl.setVisible(false);
+        ReportPanelLbl.setVisible(false);
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
     private void rosterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rosterBtnActionPerformed
         innerCardLayout.show(contentPanel, "roster");
+        ManageStaffLbl.setVisible(false);
+        DashBoardLbl.setVisible(false);
+        RosterPanelLbl.setVisible(true);
+        ReportPanelLbl.setVisible(false);
     }//GEN-LAST:event_rosterBtnActionPerformed
 
     private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
         innerCardLayout.show(contentPanel, "reports");       
+        ManageStaffLbl.setVisible(false);
+        DashBoardLbl.setVisible(false);
+        RosterPanelLbl.setVisible(false);
+        ReportPanelLbl.setVisible(true);
     }//GEN-LAST:event_reportBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -176,6 +209,10 @@ public class AdminPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DashBoardLbl;
+    private javax.swing.JLabel ManageStaffLbl;
+    private javax.swing.JLabel ReportPanelLbl;
+    private javax.swing.JLabel RosterPanelLbl;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JButton dashboardBtn;
     private javax.swing.JButton jButton1;
@@ -183,7 +220,6 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

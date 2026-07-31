@@ -18,7 +18,10 @@ public class RosterPanel extends javax.swing.JPanel {
         dateSpinner.setModel(dateModel);
         javax.swing.JSpinner.DateEditor dateEditor = new javax.swing.JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
         dateSpinner.setEditor(dateEditor);
+        dateEditor.getTextField().setBackground(new java.awt.Color(34,34,38));
+        dateEditor.getTextField().setForeground(new java.awt.Color(204, 204, 204));
         refreshData();
+        dateSpinner.setBackground(new java.awt.Color(45, 45, 50));
     }
 
     private void refreshData() {
@@ -35,123 +38,79 @@ public class RosterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         staffNameTf = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         addScheduleBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduleListArea = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
         startTimeTf = new javax.swing.JTextField();
         dateSpinner = new javax.swing.JSpinner();
         endTimeTf = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         deleteScheduleBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Roster / Schedule");
+        setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Staff Name:");
-
+        staffNameTf.setBackground(new java.awt.Color(45, 45, 50));
+        staffNameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        staffNameTf.setForeground(new java.awt.Color(153, 153, 153));
+        staffNameTf.setBorder(null);
         staffNameTf.addActionListener(this::staffNameTfActionPerformed);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Day           :");
+        add(staffNameTf);
+        staffNameTf.setBounds(60, 95, 290, 20);
 
         addScheduleBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        addScheduleBtn.setText("Add Schedule");
+        addScheduleBtn.setContentAreaFilled(false);
         addScheduleBtn.addActionListener(this::addScheduleBtnActionPerformed);
+        add(addScheduleBtn);
+        addScheduleBtn.setBounds(60, 200, 140, 30);
 
         scheduleListArea.setEditable(false);
+        scheduleListArea.setBackground(new java.awt.Color(20, 20, 22));
         scheduleListArea.setColumns(20);
+        scheduleListArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        scheduleListArea.setForeground(new java.awt.Color(204, 204, 204));
         scheduleListArea.setRows(5);
+        scheduleListArea.setText("wadawdawdawdawd");
+        scheduleListArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        scheduleListArea.setFocusable(false);
         jScrollPane1.setViewportView(scheduleListArea);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Start Time :");
+        add(jScrollPane1);
+        jScrollPane1.setBounds(40, 310, 710, 160);
 
+        startTimeTf.setBackground(new java.awt.Color(45, 45, 50));
+        startTimeTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        startTimeTf.setForeground(new java.awt.Color(153, 153, 153));
+        startTimeTf.setBorder(null);
         startTimeTf.addActionListener(this::startTimeTfActionPerformed);
+        add(startTimeTf);
+        startTimeTf.setBounds(60, 150, 130, 20);
 
+        dateSpinner.setToolTipText("");
+        dateSpinner.setBorder(null);
+        add(dateSpinner);
+        dateSpinner.setBounds(360, 150, 160, 30);
+
+        endTimeTf.setBackground(new java.awt.Color(45, 45, 50));
+        endTimeTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        endTimeTf.setForeground(new java.awt.Color(153, 153, 153));
+        endTimeTf.setBorder(null);
         endTimeTf.addActionListener(this::endTimeTfActionPerformed);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("End Time  :");
+        add(endTimeTf);
+        endTimeTf.setBounds(220, 150, 130, 20);
 
         deleteScheduleBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        deleteScheduleBtn.setText("Delete Schedule");
+        deleteScheduleBtn.setContentAreaFilled(false);
         deleteScheduleBtn.addActionListener(this::deleteScheduleBtnActionPerformed);
+        add(deleteScheduleBtn);
+        deleteScheduleBtn.setBounds(230, 200, 130, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(staffNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(addScheduleBtn))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deleteScheduleBtn)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(endTimeTf, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                .addComponent(startTimeTf)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(staffNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(startTimeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(endTimeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addScheduleBtn)
-                            .addComponent(deleteScheduleBtn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/roster_schedule_clear 1 (1).png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(932, 507));
+        jLabel1.setMinimumSize(new java.awt.Dimension(932, 507));
+        add(jLabel1);
+        jLabel1.setBounds(-170, -10, 950, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void staffNameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffNameTfActionPerformed
@@ -236,10 +195,6 @@ public class RosterPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteScheduleBtn;
     private javax.swing.JTextField endTimeTf;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea scheduleListArea;
     private javax.swing.JTextField staffNameTf;

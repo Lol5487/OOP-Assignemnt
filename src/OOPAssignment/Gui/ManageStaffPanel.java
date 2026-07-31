@@ -31,117 +31,93 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usernameLabel = new javax.swing.JLabel();
         usernameTf = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         passwordTf = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
         nameTf = new javax.swing.JTextField();
         addStaffBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        staffListArea = new javax.swing.JTextArea();
         deleteStaffBtn = new javax.swing.JButton();
         updateStaffBtn = new javax.swing.JButton();
-        refreshBtn = new javax.swing.JButton();
         roleCombo = new javax.swing.JComboBox<>();
+        loadStaffBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        staffListArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
-        usernameLabel.setText("Username: ");
+        setLayout(null);
 
+        usernameTf.setBackground(new java.awt.Color(45, 45, 50));
+        usernameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usernameTf.setForeground(new java.awt.Color(204, 204, 204));
+        usernameTf.setBorder(null);
         usernameTf.addActionListener(this::usernameTfActionPerformed);
+        add(usernameTf);
+        usernameTf.setBounds(50, 112, 170, 30);
 
-        jLabel1.setText("Password:");
-
+        passwordTf.setBackground(new java.awt.Color(45, 45, 50));
+        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        passwordTf.setBorder(null);
         passwordTf.addActionListener(this::passwordTfActionPerformed);
+        add(passwordTf);
+        passwordTf.setBounds(320, 210, 220, 20);
 
-        jLabel2.setText("Name    :");
-
+        nameTf.setBackground(new java.awt.Color(45, 45, 50));
+        nameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameTf.setForeground(new java.awt.Color(204, 204, 204));
+        nameTf.setBorder(null);
         nameTf.addActionListener(this::nameTfActionPerformed);
+        add(nameTf);
+        nameTf.setBounds(60, 210, 220, 25);
 
-        addStaffBtn.setText("Add Staff");
+        addStaffBtn.setContentAreaFilled(false);
         addStaffBtn.addActionListener(this::addStaffBtnActionPerformed);
+        add(addStaffBtn);
+        addStaffBtn.setBounds(359, 283, 110, 30);
 
+        deleteStaffBtn.setBorderPainted(false);
+        deleteStaffBtn.setContentAreaFilled(false);
+        deleteStaffBtn.addActionListener(this::deleteStaffBtnActionPerformed);
+        add(deleteStaffBtn);
+        deleteStaffBtn.setBounds(600, 283, 90, 30);
+
+        updateStaffBtn.setContentAreaFilled(false);
+        updateStaffBtn.addActionListener(this::updateStaffBtnActionPerformed);
+        add(updateStaffBtn);
+        updateStaffBtn.setBounds(490, 280, 90, 30);
+
+        roleCombo.setBackground(new java.awt.Color(45, 45, 50));
+        roleCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        roleCombo.setForeground(new java.awt.Color(204, 204, 204));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Counselor", "Receptionist" }));
+        roleCombo.setBorder(null);
+        add(roleCombo);
+        roleCombo.setBounds(50, 270, 150, 40);
+
+        loadStaffBtn.setContentAreaFilled(false);
+        loadStaffBtn.addActionListener(this::loadStaffBtnActionPerformed);
+        add(loadStaffBtn);
+        loadStaffBtn.setBounds(230, 113, 100, 30);
+
+        staffListArea.setEditable(false);
+        staffListArea.setBackground(new java.awt.Color(20, 20, 22));
         staffListArea.setColumns(20);
+        staffListArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        staffListArea.setForeground(new java.awt.Color(204, 204, 204));
         staffListArea.setRows(5);
+        staffListArea.setText("dwadsdaw");
+        staffListArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        staffListArea.setFocusTraversalPolicyProvider(true);
+        staffListArea.setFocusable(false);
+        staffListArea.setSelectionColor(new java.awt.Color(20, 20, 22));
         jScrollPane1.setViewportView(staffListArea);
 
-        deleteStaffBtn.setText("Delete");
-        deleteStaffBtn.addActionListener(this::deleteStaffBtnActionPerformed);
+        add(jScrollPane1);
+        jScrollPane1.setBounds(28, 350, 720, 133);
 
-        updateStaffBtn.setText("Update");
-        updateStaffBtn.addActionListener(this::updateStaffBtnActionPerformed);
-
-        refreshBtn.setText("Refresh");
-        refreshBtn.addActionListener(this::refreshBtnActionPerformed);
-
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Counselor", "Receptionist" }));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(addStaffBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(roleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(usernameLabel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(30, 30, 30)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(updateStaffBtn)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(deleteStaffBtn))
-                                            .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshBtn)
-                                .addGap(52, 52, 52)))))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(roleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameLabel)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addStaffBtn)
-                    .addComponent(deleteStaffBtn)
-                    .addComponent(updateStaffBtn)
-                    .addComponent(refreshBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/ManageStaff(1).png"))); // NOI18N
+        jLabel3.setMaximumSize(new java.awt.Dimension(932, 507));
+        jLabel3.setMinimumSize(new java.awt.Dimension(932, 507));
+        add(jLabel3);
+        jLabel3.setBounds(-170, 0, 940, 500);
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTfActionPerformed
@@ -186,6 +162,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Failed to add staff!");
         }
+        refreshData();
     }//GEN-LAST:event_addStaffBtnActionPerformed
 
     private void usernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTfActionPerformed
@@ -221,7 +198,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
                     javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
                 }
             }
-
+        refreshData();
     }//GEN-LAST:event_deleteStaffBtnActionPerformed
 
     private void updateStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStaffBtnActionPerformed
@@ -243,26 +220,39 @@ public class ManageStaffPanel extends javax.swing.JPanel {
             } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
         }
+        refreshData();
     }//GEN-LAST:event_updateStaffBtnActionPerformed
 
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        refreshData();
-    }//GEN-LAST:event_refreshBtnActionPerformed
+    private void loadStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadStaffBtnActionPerformed
+            String username = usernameTf.getText();
+
+    if (Validator.isEmpty(username)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please enter username to search!");
+        return;
+    }
+
+    OOPAssignment.model.User foundStaff = admin.findStaffByUsername(username);
+
+    if (foundStaff != null) {
+        nameTf.setText(foundStaff.getName());
+        javax.swing.JOptionPane.showMessageDialog(this, "Staff found! You can now edit the name and click Update.");
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
+    }
+    }//GEN-LAST:event_loadStaffBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStaffBtn;
     private javax.swing.JButton deleteStaffBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton loadStaffBtn;
     private javax.swing.JTextField nameTf;
     private javax.swing.JPasswordField passwordTf;
-    private javax.swing.JButton refreshBtn;
     private javax.swing.JComboBox<String> roleCombo;
     private javax.swing.JTextArea staffListArea;
     private javax.swing.JButton updateStaffBtn;
-    private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
 }
