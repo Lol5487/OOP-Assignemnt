@@ -50,7 +50,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         rosterBtn = new javax.swing.JButton();
-        dashboardBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class AdminPanel extends javax.swing.JPanel {
         ManageStaffLbl = new javax.swing.JLabel();
         RosterPanelLbl = new javax.swing.JLabel();
         ReportPanelLbl = new javax.swing.JLabel();
+        dashboardBtn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -108,11 +108,6 @@ public class AdminPanel extends javax.swing.JPanel {
         rosterBtn.addActionListener(this::rosterBtnActionPerformed);
         add(rosterBtn);
         rosterBtn.setBounds(20, 250, 140, 30);
-
-        dashboardBtn.setContentAreaFilled(false);
-        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
-        add(dashboardBtn);
-        dashboardBtn.setBounds(20, 140, 140, 40);
 
         jPanel3.setLayout(new java.awt.CardLayout());
         add(jPanel3);
@@ -169,6 +164,11 @@ public class AdminPanel extends javax.swing.JPanel {
         ReportPanelLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(ReportPanelLbl);
         ReportPanelLbl.setBounds(0, -10, 930, 510);
+
+        dashboardBtn.setContentAreaFilled(false);
+        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn);
+        dashboardBtn.setBounds(20, 140, 140, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
