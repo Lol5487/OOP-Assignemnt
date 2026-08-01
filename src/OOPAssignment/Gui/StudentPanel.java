@@ -8,6 +8,7 @@ import OOPAssignment.model.Admin;
 import OOPAssignment.model.Student;
 import java.awt.CardLayout;
 
+
 public class StudentPanel extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
@@ -17,6 +18,14 @@ public class StudentPanel extends javax.swing.JPanel {
 
     public StudentPanel(MainFrame mainFrame, Admin admin, Student loggedInStudent) {
         initComponents();
+        
+         makeTransparentButton(dashboardBtn);
+         makeTransparentButton(historyBtn);
+         makeTransparentButton(bookBtn);
+         makeTransparentButton(profilesBtn);
+         makeTransparentButton(queueBtn);
+         makeTransparentButton(logoutBtn);
+         
         this.mainFrame = mainFrame;
         this.admin = admin;
         this.loggedInStudent = loggedInStudent;
@@ -31,7 +40,16 @@ public class StudentPanel extends javax.swing.JPanel {
         contentPanel.add(new QueueStatusPanel(loggedInStudent), "queue");
 
         innerCardLayout.show(contentPanel, "dashboard");
+        
     }
+    
+    private void makeTransparentButton(javax.swing.JButton button) {
+    button.setOpaque(false);
+    button.setContentAreaFilled(false);
+    button.setBorderPainted(false);
+    button.setFocusPainted(false);
+    button.setBorder(null);
+}
 
 
     /**
@@ -44,8 +62,8 @@ public class StudentPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
         dashboardBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         bookBtn = new javax.swing.JButton();
@@ -55,98 +73,58 @@ public class StudentPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        dashboardBtn.setText("dashboard");
-        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
 
-        jLabel1.setText("Student");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dashboardBtn.setText("Dashboard");
+        dashboardBtn.setMaximumSize(new java.awt.Dimension(100, 35));
+        dashboardBtn.setMinimumSize(new java.awt.Dimension(100, 35));
+        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 100, 40));
 
         logoutBtn.setText("log out");
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+        add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 100, 40));
 
         contentPanel.setLayout(new java.awt.CardLayout());
+        add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(927, 0, -1, -1));
 
         bookBtn.setText("Book");
         bookBtn.addActionListener(this::bookBtnActionPerformed);
+        add(bookBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 265, 100, 40));
 
         historyBtn.setText("history");
+        historyBtn.setPreferredSize(new java.awt.Dimension(100, 35));
         historyBtn.addActionListener(this::historyBtnActionPerformed);
+        add(historyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 100, 40));
 
         profilesBtn.setText("profiles");
         profilesBtn.addActionListener(this::profilesBtnActionPerformed);
+        add(profilesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 100, 50));
 
         queueBtn.setText("Queue");
         queueBtn.addActionListener(this::queueBtnActionPerformed);
+        add(queueBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 385, 100, 50));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 1255, -1, 382));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 2, -1, 1639));
 
         jPanel1.setLayout(new java.awt.CardLayout());
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 1637, 74, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bookBtn)
-                    .addComponent(profilesBtn)
-                    .addComponent(queueBtn)
-                    .addComponent(logoutBtn)
-                    .addComponent(historyBtn)
-                    .addComponent(dashboardBtn))
-                .addGap(78, 78, 78)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(185, 185, 185)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(745, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(135, 135, 135)
-                .addComponent(dashboardBtn)
-                .addGap(18, 18, 18)
-                .addComponent(historyBtn)
-                .addGap(18, 18, 18)
-                .addComponent(bookBtn)
-                .addGap(18, 18, 18)
-                .addComponent(profilesBtn)
-                .addGap(18, 18, 18)
-                .addComponent(queueBtn)
-                .addGap(18, 18, 18)
-                .addComponent(logoutBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(2, 2, 2)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                    .addGap(2, 2, 2)))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/StudentDashboard.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, 0, 500, 510));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -180,6 +158,8 @@ public class StudentPanel extends javax.swing.JPanel {
     private javax.swing.JButton dashboardBtn;
     private javax.swing.JButton historyBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
