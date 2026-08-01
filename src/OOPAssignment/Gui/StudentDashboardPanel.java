@@ -60,7 +60,7 @@ public class StudentDashboardPanel extends javax.swing.JPanel {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("TP102292");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 70, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 70, 30));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("TP102292@mail.apu.edu.my");
