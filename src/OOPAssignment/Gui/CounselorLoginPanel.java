@@ -88,7 +88,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_login_preview.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(0, 0, 940, 510);
+        jLabel3.setBounds(0, 0, 1080, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
