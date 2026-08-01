@@ -9,11 +9,16 @@ import OOPAssignment.model.Student;
 public class StudentLoginPanel extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
+    private char defaultEchoChar;
 
     public StudentLoginPanel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        
+        defaultEchoChar = passwordTf.getEchoChar();
+         showPasswordCb.addActionListener(e -> togglePassword());
 
+     
         usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -30,6 +35,15 @@ public class StudentLoginPanel extends javax.swing.JPanel {
             }
         });
     }
+    private void togglePassword() {
+
+    if (showPasswordCb.isSelected()) {
+        passwordTf.setEchoChar((char) 0);
+    } else {
+        passwordTf.setEchoChar(defaultEchoChar);
+    }
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,69 +53,60 @@ public class StudentLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane2 = new javax.swing.JLayeredPane();
-        backBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         loginBtn = new javax.swing.JButton();
         usernameTf = new javax.swing.JTextField();
         passwordTf = new javax.swing.JPasswordField();
+        backBtn = new javax.swing.JButton();
+        showPasswordCb = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
-
-        backBtn.setText("Back");
-        backBtn.addActionListener(this::backBtnActionPerformed);
-
-        jLayeredPane2.setLayer(backBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
-        jLayeredPane2.setLayout(jLayeredPane2Layout);
-        jLayeredPane2Layout.setHorizontalGroup(
-            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jLayeredPane2Layout.setVerticalGroup(
-            jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 77, Short.MAX_VALUE))
-        );
-
-        add(jLayeredPane2);
-        jLayeredPane2.setBounds(463, 332, 155, 100);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
         add(jLabel5);
         jLabel5.setBounds(0, 0, 110, 100);
 
-        jLabel2.setText("Username:");
-        add(jLabel2);
-        jLabel2.setBounds(270, 170, 56, 16);
-
-        jLabel3.setText("Password:");
-        add(jLabel3);
-        jLabel3.setBounds(260, 240, 53, 16);
-
+        loginBtn.setBackground(new java.awt.Color(71, 102, 138));
         loginBtn.setText("Login");
+        loginBtn.setBorder(null);
         loginBtn.addActionListener(this::loginBtnActionPerformed);
         add(loginBtn);
-        loginBtn.setBounds(300, 320, 72, 23);
+        loginBtn.setBounds(50, 400, 280, 30);
 
+        usernameTf.setBackground(new java.awt.Color(30, 34, 48));
+        usernameTf.setForeground(new java.awt.Color(255, 255, 255));
+        usernameTf.setBorder(null);
         usernameTf.addActionListener(this::usernameTfActionPerformed);
         add(usernameTf);
-        usernameTf.setBounds(400, 160, 171, 22);
+        usernameTf.setBounds(40, 260, 280, 40);
 
+        passwordTf.setBackground(new java.awt.Color(30, 34, 48));
+        passwordTf.setForeground(new java.awt.Color(255, 255, 255));
+        passwordTf.setBorder(null);
         passwordTf.addActionListener(this::passwordTfActionPerformed);
         add(passwordTf);
-        passwordTf.setBounds(400, 240, 171, 22);
+        passwordTf.setBounds(40, 330, 280, 40);
 
-        jLabel1.setText("Student Login");
+        backBtn.setBackground(new java.awt.Color(71, 102, 138));
+        backBtn.setText("Back");
+        backBtn.setBorder(null);
+        backBtn.addActionListener(this::backBtnActionPerformed);
+        add(backBtn);
+        backBtn.setBounds(50, 440, 280, 30);
+
+        showPasswordCb.setBackground(new java.awt.Color(14, 17, 23));
+        showPasswordCb.setForeground(new java.awt.Color(255, 255, 255));
+        showPasswordCb.setText("Show Password");
+        showPasswordCb.setBorder(null);
+        showPasswordCb.addActionListener(this::showPasswordCbActionPerformed);
+        add(showPasswordCb);
+        showPasswordCb.setBounds(230, 310, 130, 18);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/StudentLoginPanel.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
         add(jLabel1);
-        jLabel1.setBounds(390, 60, 74, 16);
+        jLabel1.setBounds(-320, -10, 1250, 520);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTfActionPerformed
@@ -114,7 +119,7 @@ public class StudentLoginPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String inputUsername = usernameTf.getText();
-        String inputPassword = passwordTf.getText();
+        String inputPassword = new String(passwordTf.getPassword());
 
         Student student = new Student();
         boolean success = student.login(inputUsername, inputPassword);
@@ -131,16 +136,18 @@ public class StudentLoginPanel extends javax.swing.JPanel {
         mainFrame.showPanel("menu");
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void showPasswordCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordCbActionPerformed
+        togglePassword();
+    }//GEN-LAST:event_showPasswordCbActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField passwordTf;
+    private javax.swing.JCheckBox showPasswordCb;
     private javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
 }
