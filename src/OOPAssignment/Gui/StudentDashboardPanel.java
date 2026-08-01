@@ -27,23 +27,23 @@ public class StudentDashboardPanel extends javax.swing.JPanel {
 
         welcomeLbl = new javax.swing.JLabel();
 
-        welcomeLbl.setText("jLabel1");
+        welcomeLbl.setText("Student Dashboard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(187, 187, 187)
                 .addComponent(welcomeLbl)
-                .addContainerGap(845, Short.MAX_VALUE))
+                .addContainerGap(645, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(welcomeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(welcomeLbl)
+                .addContainerGap(433, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
