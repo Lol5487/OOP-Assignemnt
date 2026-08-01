@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package OOPAssignment.Gui;
-
+    
 import OOPAssignment.model.Student;
+import OOPAssignment.model.Appointment;
+import java.util.List;
 
 public class StudentDashboardPanel extends javax.swing.JPanel {
 
@@ -13,8 +15,11 @@ public class StudentDashboardPanel extends javax.swing.JPanel {
     public StudentDashboardPanel(Student student) {
         initComponents();
         this.student = student;
-        welcomeLbl.setText("Welcome, " + student.getName() + "!");
+
+        loadDashboard();    
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,29 +31,126 @@ public class StudentDashboardPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         welcomeLbl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        dateValueLbl = new javax.swing.JLabel();
+        timeValueLbl = new javax.swing.JLabel();
+        counselorValueLbl = new javax.swing.JLabel();
+        statusValueLbl = new javax.swing.JLabel();
+        queueValueLbl = new javax.swing.JLabel();
+        waitingValueLbl = new javax.swing.JLabel();
+        png = new javax.swing.JLabel();
 
-        welcomeLbl.setText("Student Dashboard");
+        addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                formAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addComponent(welcomeLbl)
-                .addContainerGap(645, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(welcomeLbl)
-                .addContainerGap(433, Short.MAX_VALUE))
-        );
+        welcomeLbl.setBackground(new java.awt.Color(255, 255, 255));
+        welcomeLbl.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeLbl.setText("                   Student Dashboard");
+        add(welcomeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 230, 60));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("TP102292");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, 70, 30));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("TP102292@mail.apu.edu.my");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, -1, -1));
+
+        dateValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        dateValueLbl.setText("jLabel1");
+        add(dateValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
+
+        timeValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        timeValueLbl.setText("jLabel5");
+        add(timeValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+
+        counselorValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        counselorValueLbl.setText("jLabel6");
+        add(counselorValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
+
+        statusValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        statusValueLbl.setText("jLabel7");
+        add(statusValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+
+        queueValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        queueValueLbl.setText("jLabel1");
+        add(queueValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, -1, -1));
+
+        waitingValueLbl.setForeground(new java.awt.Color(255, 255, 255));
+        waitingValueLbl.setText("jLabel2");
+        add(waitingValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
+
+        png.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/StudentDashboard_933x506.png"))); // NOI18N
+        png.setText("jLabel2");
+        add(png, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_formAncestorAdded
+
+    }//GEN-LAST:event_formAncestorAdded
+    private void loadDashboard() {
+
+    // Student info
+    welcomeLbl.setText("Welcome, " + student.getName());
+    jLabel3.setText(student.getStudentId());
+    jLabel4.setText(student.getEmail());
+
+    // Appointment
+    List<Appointment> appointments =
+            Appointment.findByStudent(student.getUsername());
+
+    if (!appointments.isEmpty()) {
+
+        Appointment upcoming = appointments.get(0);
+
+        dateValueLbl.setText(upcoming.getDate());
+        timeValueLbl.setText(upcoming.getTime());
+        counselorValueLbl.setText(upcoming.getCounselorUsername());
+        statusValueLbl.setText(upcoming.getStatus());
+
+    } else {
+
+        dateValueLbl.setText("No Appointment");
+        timeValueLbl.setText("-");
+        counselorValueLbl.setText("-");
+        statusValueLbl.setText("-");
+    }
+
+    // Queue
+    if (student.getQueueNumber() == -1) {
+
+        queueValueLbl.setText("No Queue");
+        waitingValueLbl.setText("-");
+
+    } else {
+
+        queueValueLbl.setText(String.valueOf(student.getQueueNumber()));
+
+        int waitingMinutes = student.getQueueNumber() * 10;
+
+        waitingValueLbl.setText(waitingMinutes + " mins");
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel counselorValueLbl;
+    private javax.swing.JLabel dateValueLbl;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel png;
+    private javax.swing.JLabel queueValueLbl;
+    private javax.swing.JLabel statusValueLbl;
+    private javax.swing.JLabel timeValueLbl;
+    private javax.swing.JLabel waitingValueLbl;
     private javax.swing.JLabel welcomeLbl;
     // End of variables declaration//GEN-END:variables
 }

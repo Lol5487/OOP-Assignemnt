@@ -76,17 +76,17 @@ public class StudentLoginPanel extends javax.swing.JPanel {
 
         usernameTf.setBackground(new java.awt.Color(30, 34, 48));
         usernameTf.setForeground(new java.awt.Color(255, 255, 255));
-        usernameTf.setBorder(null);
+        usernameTf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         usernameTf.addActionListener(this::usernameTfActionPerformed);
         add(usernameTf);
-        usernameTf.setBounds(40, 260, 280, 40);
+        usernameTf.setBounds(30, 260, 290, 40);
 
         passwordTf.setBackground(new java.awt.Color(30, 34, 48));
         passwordTf.setForeground(new java.awt.Color(255, 255, 255));
-        passwordTf.setBorder(null);
+        passwordTf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         passwordTf.addActionListener(this::passwordTfActionPerformed);
         add(passwordTf);
-        passwordTf.setBounds(40, 330, 280, 40);
+        passwordTf.setBounds(30, 330, 290, 40);
 
         backBtn.setBackground(new java.awt.Color(71, 102, 138));
         backBtn.setText("Back");

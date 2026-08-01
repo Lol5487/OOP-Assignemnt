@@ -38,6 +38,7 @@ public class StudentPanel extends javax.swing.JPanel {
         contentPanel.add(new MyAppointmentHistoryPanel(loggedInStudent), "history");
         contentPanel.add(new CounselorProfilesPanel(admin), "profiles");
         contentPanel.add(new QueueStatusPanel(loggedInStudent), "queue");
+        add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 740, 510));
 
         innerCardLayout.show(contentPanel, "dashboard");
         
@@ -124,7 +125,7 @@ public class StudentPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/StudentDashboard.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, 0, 500, 510));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-320, 0, 510, 510));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
