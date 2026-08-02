@@ -83,8 +83,9 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
         bookBtn.addActionListener(this::bookBtnActionPerformed);
         add(bookBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 80, 20));
 
-        resultArea.setBackground(new java.awt.Color(153, 153, 153));
+        resultArea.setBackground(new java.awt.Color(0, 0, 0));
         resultArea.setColumns(20);
+        resultArea.setForeground(new java.awt.Color(255, 255, 255));
         resultArea.setRows(5);
         jScrollPane1.setViewportView(resultArea);
 
