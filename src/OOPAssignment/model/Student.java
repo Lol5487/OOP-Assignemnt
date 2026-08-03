@@ -47,14 +47,7 @@ public class Student {
         this.appointmentHistory = new ArrayList<>();
     }
  
-    /**
-     * Called directly from StudentLoginPanel:
-     *   boolean success = student.login(inputUsername, inputPassword);
-     *
-     * Looks the username up in students.txt, checks the password,
-     * and if it matches, loads that student's full record into
-     * this object so the rest of the app can use it after login.
-     */
+
     public boolean login(String inputUsername, String inputPassword) {
         if (inputUsername == null || inputPassword == null) {
             return false;
@@ -74,7 +67,7 @@ public class Student {
         return false;
     }
  
-    // ---------- File persistence ----------
+    //File persistence
  
     public static Student findByUsername(String username) {
         for (Student s : loadAll()) {
@@ -183,7 +176,7 @@ public class Student {
         return false;
     }
  
-    // ---------- Appointment-related helpers (per assignment Student requirements) ----------
+    //Appointment-related helpers (per assignment Student requirements
  
     public void addAppointmentRecord(String record) {
         appointmentHistory.add(record);
@@ -201,7 +194,7 @@ public class Student {
         return queueNumber;
     }
  
-    // ---------- Getters ----------
+    //Getters
  
     public String getStudentId() {
         return studentId;

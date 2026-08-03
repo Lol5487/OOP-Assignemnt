@@ -74,12 +74,14 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         BackBT.setBounds(440, 390, 400, 40);
 
         UsernameTF.setBackground(new java.awt.Color(46, 51, 61));
+        UsernameTF.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         UsernameTF.setBorder(null);
         UsernameTF.addActionListener(this::UsernameTFActionPerformed);
         add(UsernameTF);
         UsernameTF.setBounds(430, 190, 420, 60);
 
         PasswordTF.setBackground(new java.awt.Color(46, 51, 61));
+        PasswordTF.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         PasswordTF.setBorder(null);
         PasswordTF.addActionListener(this::PasswordTFActionPerformed);
         add(PasswordTF);
@@ -88,7 +90,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_login_preview.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(0, 0, 1080, 510);
+        jLabel3.setBounds(0, 0, 940, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
@@ -98,7 +100,7 @@ public class CounselorLoginPanel extends javax.swing.JPanel {
     User foundStaff = admin.findStaffByUsername(inputUsername);
 
     if (foundStaff != null && foundStaff.login(inputUsername, inputPassword) 
-            && foundStaff instanceof Counselor) {   // 加这个检查
+            && foundStaff instanceof Counselor) {
         javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
         mainFrame.showCounselorPanel(foundStaff);
     } else {

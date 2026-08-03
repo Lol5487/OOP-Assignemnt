@@ -15,7 +15,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         public AdminDashboardPanel(Admin admin) {
             initComponents();
             this.admin = admin;
-            refreshData();   // 一打开Dashboard,就先显示一次资料
+            refreshData();
         }
 
         private void refreshData() {
@@ -60,7 +60,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         staffListArea.setEditable(false);
         staffListArea.setBackground(new java.awt.Color(20, 20, 22));
         staffListArea.setColumns(20);
-        staffListArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        staffListArea.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
         staffListArea.setForeground(new java.awt.Color(204, 204, 204));
         staffListArea.setRows(5);
         staffListArea.setText("sdasdwadsad");
@@ -73,7 +73,7 @@ public class AdminDashboardPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(staffListArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(50, 220, 670, 250);
+        jScrollPane1.setBounds(50, 230, 660, 240);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));

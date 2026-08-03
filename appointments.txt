@@ -1,5 +1,7 @@
 APT1|stud01|couns01|2025-07-30|10:00|Physical|Confirmed
-APT2|stud01|couns01|2026-08-19|10:00|Online|Cancelled
-APT3|stud01|couns01|2026-07-30|10:00|Physical|Confirmed
+APT2|bisbis|Baoji|2026-08-03|10:00|Physical|Pending
+APT3|stud01|Baoji|2026-07-30|10:00|Physical|Confirmed
 APT4|stud01|couns03|2026-07-30|2:00|Online|Confirmed
-APT5|stud01|miko|2027-08-03|1pm|Physical|Confirmed
+APT5|stud01|recep01|2026-08-04|10:00|Online|Cancelled
+WalkIn1|bisbis|Baoji|2026-08-03|10:00|Physical|Pending
+APT7|stud01|couns01|2026-08-05|25:00|Physical|Pending

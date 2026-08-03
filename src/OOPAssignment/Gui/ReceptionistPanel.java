@@ -5,6 +5,7 @@
 package OOPAssignment.Gui;
 
 import OOPAssignment.model.Admin;
+import OOPAssignment.model.Receptionist;
 import OOPAssignment.model.User;
 import java.awt.CardLayout;
 
@@ -14,6 +15,7 @@ public class ReceptionistPanel extends javax.swing.JPanel {
     private Admin admin;
     private User loggedInReceptionist;
     private CardLayout innerCardLayout;
+    private ReceptionistDashboardPanel dashboardPanel;
 
     public ReceptionistPanel(MainFrame mainFrame, Admin admin, User loggedInReceptionist) {
         initComponents();
@@ -24,7 +26,9 @@ public class ReceptionistPanel extends javax.swing.JPanel {
         innerCardLayout = new CardLayout();
         contentPanel.setLayout(innerCardLayout);
 
-        contentPanel.add(new ReceptionistDashboardPanel(loggedInReceptionist), "dashboard");
+        dashboardPanel = new ReceptionistDashboardPanel(loggedInReceptionist);
+        contentPanel.add(dashboardPanel, "dashboard");
+
         contentPanel.add(new ManageStudentPanel(), "manageStudent");
         contentPanel.add(new ManageAppointmentPanel(admin), "manageAppointment");
         contentPanel.add(new QueuePanel(), "queue");
@@ -40,117 +44,112 @@ public class ReceptionistPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
         dashboardBtn = new javax.swing.JButton();
         manageStudentBtn = new javax.swing.JButton();
         manageAppointmentBtn = new javax.swing.JButton();
         queueBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         contentPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        DashBoardLbl = new javax.swing.JLabel();
+        ManageAppointmentLbl = new javax.swing.JLabel();
+        ManageStudentLbl = new javax.swing.JLabel();
+        QueueLbl = new javax.swing.JLabel();
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        setLayout(null);
 
-        dashboardBtn.setText("Dashboard");
+        dashboardBtn.setContentAreaFilled(false);
         dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn);
+        dashboardBtn.setBounds(20, 170, 230, 40);
 
-        manageStudentBtn.setText("Manage Student");
+        manageStudentBtn.setContentAreaFilled(false);
         manageStudentBtn.addActionListener(this::manageStudentBtnActionPerformed);
+        add(manageStudentBtn);
+        manageStudentBtn.setBounds(20, 230, 220, 30);
 
-        manageAppointmentBtn.setText("Manage Appointment");
+        manageAppointmentBtn.setContentAreaFilled(false);
         manageAppointmentBtn.addActionListener(this::manageAppointmentBtnActionPerformed);
+        add(manageAppointmentBtn);
+        manageAppointmentBtn.setBounds(20, 290, 220, 30);
 
-        queueBtn.setText("Queue");
+        queueBtn.setContentAreaFilled(false);
         queueBtn.addActionListener(this::queueBtnActionPerformed);
+        add(queueBtn);
+        queueBtn.setBounds(20, 350, 220, 30);
 
-        logoutBtn.setText("Logout");
+        logoutBtn.setToolTipText("");
+        logoutBtn.setContentAreaFilled(false);
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(logoutBtn);
+        logoutBtn.setBounds(20, 470, 120, 30);
 
         contentPanel.setMaximumSize(new java.awt.Dimension(808, 500));
         contentPanel.setLayout(new java.awt.CardLayout());
+        add(contentPanel);
+        contentPanel.setBounds(250, 0, 700, 506);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(manageAppointmentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(logoutBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 779, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dashboardBtn)
-                                    .addComponent(jLabel5))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(19, 19, 19)
-                                    .addComponent(queueBtn)))
-                            .addGap(33, 33, 33))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(manageStudentBtn)
-                            .addGap(21, 21, 21)))
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(manageAppointmentBtn)
-                .addGap(99, 99, 99)
-                .addComponent(logoutBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(26, 26, 26)
-                            .addComponent(dashboardBtn)
-                            .addGap(27, 27, 27)
-                            .addComponent(manageStudentBtn)
-                            .addGap(91, 91, 91)
-                            .addComponent(queueBtn)
-                            .addGap(0, 176, Short.MAX_VALUE)))
-                    .addContainerGap()))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(70, 10, 110, 110);
+
+        DashBoardLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/ReceptionistDashboard1.png"))); // NOI18N
+        add(DashBoardLbl);
+        DashBoardLbl.setBounds(0, 0, 933, 506);
+
+        ManageAppointmentLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/manageAppointment 1.png"))); // NOI18N
+        add(ManageAppointmentLbl);
+        ManageAppointmentLbl.setBounds(0, 0, 937, 506);
+
+        ManageStudentLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/receptionistmanagestudent 1.png"))); // NOI18N
+        add(ManageStudentLbl);
+        ManageStudentLbl.setBounds(0, 0, 700, 506);
+
+        QueueLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Queue 1.png"))); // NOI18N
+        add(QueueLbl);
+        QueueLbl.setBounds(0, 0, 937, 506);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
         innerCardLayout.show(contentPanel, "dashboard");
+        ManageStudentLbl.setVisible(false);
+        DashBoardLbl.setVisible(true);
+        ManageAppointmentLbl.setVisible(false);
+        QueueLbl.setVisible(false);
+        dashboardPanel.refreshStats();
+    
+    for (java.awt.Component comp : contentPanel.getComponents()) {
+            if (comp instanceof ReceptionistDashboardPanel) {
+                ((ReceptionistDashboardPanel) comp).refreshStats();
+                break;
+            }
+        }   
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
     private void manageStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStudentBtnActionPerformed
 
        innerCardLayout.show(contentPanel, "manageStudent");
+       ManageStudentLbl.setVisible(true);
+        DashBoardLbl.setVisible(false);
+        ManageAppointmentLbl.setVisible(false);
+        QueueLbl.setVisible(false);
     }//GEN-LAST:event_manageStudentBtnActionPerformed
 
     private void manageAppointmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAppointmentBtnActionPerformed
         innerCardLayout.show(contentPanel, "manageAppointment");
+        ManageStudentLbl.setVisible(false);
+        DashBoardLbl.setVisible(false);
+        ManageAppointmentLbl.setVisible(true);
+        QueueLbl.setVisible(false);
 
     }//GEN-LAST:event_manageAppointmentBtnActionPerformed
 
     private void queueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queueBtnActionPerformed
        innerCardLayout.show(contentPanel, "queue");
+        ManageStudentLbl.setVisible(false);
+        DashBoardLbl.setVisible(false);
+        ManageAppointmentLbl.setVisible(false);
+        QueueLbl.setVisible(true);
 
     }//GEN-LAST:event_queueBtnActionPerformed
 
@@ -160,10 +159,13 @@ public class ReceptionistPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DashBoardLbl;
+    private javax.swing.JLabel ManageAppointmentLbl;
+    private javax.swing.JLabel ManageStudentLbl;
+    private javax.swing.JLabel QueueLbl;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JButton dashboardBtn;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton manageAppointmentBtn;
     private javax.swing.JButton manageStudentBtn;

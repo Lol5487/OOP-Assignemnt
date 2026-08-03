@@ -129,6 +129,11 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
             return;
         }
+        
+        if (!Validator.isValidTime(time)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid time in HH:MM format (e.g. 09:00)!");
+            return;
+            }
 
         String id = Appointment.generateNextId();
         Appointment appointment = new Appointment(id, student.getUsername(), counselorUsername,

@@ -32,7 +32,6 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         usernameTf = new javax.swing.JTextField();
-        passwordTf = new javax.swing.JPasswordField();
         nameTf = new javax.swing.JTextField();
         addStaffBtn = new javax.swing.JButton();
         deleteStaffBtn = new javax.swing.JButton();
@@ -41,32 +40,26 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         loadStaffBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         staffListArea = new javax.swing.JTextArea();
+        passwordTf = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(null);
 
         usernameTf.setBackground(new java.awt.Color(45, 45, 50));
-        usernameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usernameTf.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
         usernameTf.setForeground(new java.awt.Color(204, 204, 204));
         usernameTf.setBorder(null);
         usernameTf.addActionListener(this::usernameTfActionPerformed);
         add(usernameTf);
-        usernameTf.setBounds(50, 112, 170, 30);
-
-        passwordTf.setBackground(new java.awt.Color(45, 45, 50));
-        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        passwordTf.setBorder(null);
-        passwordTf.addActionListener(this::passwordTfActionPerformed);
-        add(passwordTf);
-        passwordTf.setBounds(320, 210, 220, 20);
+        usernameTf.setBounds(60, 120, 160, 23);
 
         nameTf.setBackground(new java.awt.Color(45, 45, 50));
-        nameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameTf.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
         nameTf.setForeground(new java.awt.Color(204, 204, 204));
         nameTf.setBorder(null);
         nameTf.addActionListener(this::nameTfActionPerformed);
         add(nameTf);
-        nameTf.setBounds(60, 210, 220, 25);
+        nameTf.setBounds(60, 210, 220, 23);
 
         addStaffBtn.setContentAreaFilled(false);
         addStaffBtn.addActionListener(this::addStaffBtnActionPerformed);
@@ -100,7 +93,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         staffListArea.setEditable(false);
         staffListArea.setBackground(new java.awt.Color(20, 20, 22));
         staffListArea.setColumns(20);
-        staffListArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        staffListArea.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
         staffListArea.setForeground(new java.awt.Color(204, 204, 204));
         staffListArea.setRows(5);
         staffListArea.setText("dwadsdaw");
@@ -111,7 +104,14 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(staffListArea);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(28, 350, 720, 133);
+        jScrollPane1.setBounds(28, 350, 720, 123);
+
+        passwordTf.setBackground(new java.awt.Color(45, 45, 50));
+        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passwordTf.setForeground(new java.awt.Color(204, 204, 204));
+        passwordTf.setBorder(null);
+        add(passwordTf);
+        passwordTf.setBounds(310, 210, 230, 25);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/ManageStaff(1).png"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(932, 507));
@@ -119,10 +119,6 @@ public class ManageStaffPanel extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(-170, 0, 940, 500);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void passwordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTfActionPerformed
-
-    }//GEN-LAST:event_passwordTfActionPerformed
 
     private void addStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffBtnActionPerformed
         String username = usernameTf.getText();
@@ -202,24 +198,40 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteStaffBtnActionPerformed
 
     private void updateStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStaffBtnActionPerformed
-            String username = usernameTf.getText();
-            String newName = nameTf.getText();
+        String username = usernameTf.getText();
+        String newName = nameTf.getText();
+        String newPassword = passwordTf.getText();
 
-            if (Validator.isEmpty(username) || Validator.isEmpty(newName)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Please enter username and new name!");
+        if (Validator.isEmpty(username)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter username to update!");
+            return;
+        }
+
+        OOPAssignment.model.User existingStaff = admin.findStaffByUsername(username);
+
+        if (existingStaff == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
+            return;
+        }
+
+        if (!Validator.isEmpty(newName)) {
+            existingStaff.setName(newName);
+        }
+
+        if (!Validator.isEmpty(newPassword)) {
+            if (!Validator.isValidPassword(newPassword)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Password must be at least 6 characters!");
                 return;
             }
-
-            boolean success = admin.updateStaff(username, newName);
-
-            if (success) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Staff updated successfully!");
-                usernameTf.setText("");
-                passwordTf.setText("");
-                nameTf.setText("");
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
+            existingStaff.setPassword(newPassword);
         }
+
+        admin.rewriteStaffFile();
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Staff updated successfully!");
+        usernameTf.setText("");
+        passwordTf.setText("");
+        nameTf.setText("");
         refreshData();
     }//GEN-LAST:event_updateStaffBtnActionPerformed
 
@@ -235,6 +247,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
 
     if (foundStaff != null) {
         nameTf.setText(foundStaff.getName());
+        passwordTf.setText(foundStaff.getPassword()); 
         javax.swing.JOptionPane.showMessageDialog(this, "Staff found! You can now edit the name and click Update.");
     } else {
         javax.swing.JOptionPane.showMessageDialog(this, "Staff not found!");
@@ -249,7 +262,7 @@ public class ManageStaffPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadStaffBtn;
     private javax.swing.JTextField nameTf;
-    private javax.swing.JPasswordField passwordTf;
+    private javax.swing.JTextField passwordTf;
     private javax.swing.JComboBox<String> roleCombo;
     private javax.swing.JTextArea staffListArea;
     private javax.swing.JButton updateStaffBtn;

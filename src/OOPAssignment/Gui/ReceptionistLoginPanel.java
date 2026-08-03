@@ -45,107 +45,52 @@ public class ReceptionistLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        usernameTf = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        passwordTf = new javax.swing.JPasswordField();
-        loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
+        passwordTf = new javax.swing.JPasswordField();
+        usernameTf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setText("Receptionist Login");
+        setLayout(null);
 
-        jLabel2.setText("Username:");
-
-        usernameTf.addActionListener(this::usernameTfActionPerformed);
-
-        jLabel3.setText("Password:");
-
-        passwordTf.addActionListener(this::passwordTfActionPerformed);
-
-        loginBtn.setText("Login");
-        loginBtn.addActionListener(this::loginBtnActionPerformed);
-
-        backBtn.setText("Back");
+        backBtn.setAutoscrolls(true);
+        backBtn.setBorderPainted(false);
+        backBtn.setContentAreaFilled(false);
+        backBtn.setFocusPainted(false);
         backBtn.addActionListener(this::backBtnActionPerformed);
+        add(backBtn);
+        backBtn.setBounds(510, 360, 90, 30);
+
+        loginBtn.setBorderPainted(false);
+        loginBtn.setContentAreaFilled(false);
+        loginBtn.setFocusPainted(false);
+        loginBtn.addActionListener(this::loginBtnActionPerformed);
+        add(loginBtn);
+        loginBtn.setBounds(340, 360, 90, 30);
+
+        passwordTf.setBackground(new java.awt.Color(51, 51, 51));
+        passwordTf.setForeground(new java.awt.Color(255, 255, 255));
+        passwordTf.setBorder(null);
+        passwordTf.addActionListener(this::passwordTfActionPerformed);
+        add(passwordTf);
+        passwordTf.setBounds(370, 270, 240, 40);
+
+        usernameTf.setBackground(new java.awt.Color(51, 51, 51));
+        usernameTf.setForeground(new java.awt.Color(255, 255, 255));
+        usernameTf.setBorder(null);
+        usernameTf.setOpaque(true);
+        usernameTf.addActionListener(this::usernameTfActionPerformed);
+        add(usernameTf);
+        usernameTf.setBounds(370, 190, 240, 40);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/apulogo (1).png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(50, 30, 110, 100);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addComponent(jLabel5))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(passwordTf)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(317, Short.MAX_VALUE)
-                .addComponent(loginBtn)
-                .addGap(70, 70, 70)
-                .addComponent(backBtn)
-                .addGap(402, 402, 402))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(96, 96, 96))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(87, 87, 87)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginBtn)
-                    .addComponent(backBtn))
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 933, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Receptionist login.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(0, 0, 940, 505);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTfActionPerformed
@@ -163,7 +108,7 @@ public class ReceptionistLoginPanel extends javax.swing.JPanel {
     User foundStaff = admin.findStaffByUsername(inputUsername);
 
     if (foundStaff != null && foundStaff.login(inputUsername, inputPassword) 
-            && foundStaff instanceof Receptionist) {   // 加这个检查
+            && foundStaff instanceof Receptionist) {
         javax.swing.JOptionPane.showMessageDialog(this, "Login successful!");
         mainFrame.showReceptionistPanel(foundStaff);
     } else {
@@ -178,11 +123,8 @@ public class ReceptionistLoginPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPasswordField passwordTf;
     private javax.swing.JTextField usernameTf;

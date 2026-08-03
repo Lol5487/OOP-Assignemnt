@@ -10,16 +10,32 @@ package OOPAssignment.Gui;
  */
 public class MenuPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MenuPanel
-     */
     private MainFrame mainFrame;
 
     public MenuPanel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+
+        addHoverIcon(adminBtn, "/OOPAssignment/Gui/menu_panel_correct_colors 1 (1) (4).png");
+        addHoverIcon(counselorBtn, "/OOPAssignment/Gui/menu_panel_correct_colors 1 (1) (3).png");
+        addHoverIcon(receptionistBtn, "/OOPAssignment/Gui/menu_panel_correct_colors 1 (1) (2).png");
+        addHoverIcon(studentBtn, "/OOPAssignment/Gui/menu_panel_correct_colors 1 (1) (1).png");
     }
 
+    private void addHoverIcon(javax.swing.JButton btn, String iconPath) {
+        javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(iconPath));
+
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn.setIcon(icon);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn.setIcon(null);
+            }
+        });
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,23 +56,23 @@ public class MenuPanel extends javax.swing.JPanel {
         counselorBtn.setContentAreaFilled(false);
         counselorBtn.addActionListener(this::counselorBtnActionPerformed);
         add(counselorBtn);
-        counselorBtn.setBounds(300, 290, 140, 30);
+        counselorBtn.setBounds(299, 290, 140, 34);
 
         receptionistBtn.setContentAreaFilled(false);
         receptionistBtn.addActionListener(this::receptionistBtnActionPerformed);
         add(receptionistBtn);
-        receptionistBtn.setBounds(495, 293, 130, 30);
+        receptionistBtn.setBounds(489, 290, 140, 34);
 
         adminBtn.setBackground(java.awt.SystemColor.windowBorder);
         adminBtn.setContentAreaFilled(false);
         adminBtn.addActionListener(this::adminBtnActionPerformed);
         add(adminBtn);
-        adminBtn.setBounds(110, 290, 140, 30);
+        adminBtn.setBounds(109, 290, 140, 34);
 
         studentBtn.setContentAreaFilled(false);
         studentBtn.addActionListener(this::studentBtnActionPerformed);
         add(studentBtn);
-        studentBtn.setBounds(680, 290, 140, 30);
+        studentBtn.setBounds(679, 290, 140, 35);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/menu_panel_correct_colors 1.png"))); // NOI18N
         add(jLabel2);

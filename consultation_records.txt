@@ -1,1 +1,2 @@
 REC1|stud01|couns01|2026-07-29|Student seems stressed about exams|Suggest weekly follow-up
+REC2|bryanyeo|couns01|2026-08-03|student got tress probmlem by exam a|sugget student that can go to do something that they like and let the stress out 

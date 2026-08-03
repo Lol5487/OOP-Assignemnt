@@ -12,7 +12,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
         studentListArea.setEditable(false);
         refreshData();
 
-        // Student ID → Enter跳去Name
+
         studentIdTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -21,7 +21,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        // Name → Enter跳去Username
+
         nameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -30,7 +30,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        // Username → Enter跳去Password
+
         usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -39,7 +39,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        // Password → Enter跳去Email
+
         passwordTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -48,7 +48,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        // Email → Enter直接送出
+
         emailTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
@@ -61,7 +61,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
     private void refreshData() {
         java.util.List<OOPAssignment.model.Student> students = OOPAssignment.model.Student.loadAll();
 
-        String result = "=== Student List ===\n";
+        String result = "";
         if (students.isEmpty()) {
             result += "No students yet.\n";
         } else {
@@ -96,112 +96,76 @@ public class ManageStudentPanel extends javax.swing.JPanel {
         loadStudentBtn = new javax.swing.JButton();
         updateStudentBtn = new javax.swing.JButton();
         deleteStudentBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         studentIdTf.addActionListener(this::studentIdTfActionPerformed);
+        add(studentIdTf);
+        studentIdTf.setBounds(90, 70, 178, 30);
+        add(nameTf);
+        nameTf.setBounds(80, 130, 178, 30);
+        add(passwordTf);
+        passwordTf.setBounds(80, 233, 178, 30);
 
         emailTf.addActionListener(this::emailTfActionPerformed);
+        add(emailTf);
+        emailTf.setBounds(70, 293, 178, 30);
 
-        addStudentBtn.setText("Add Student");
+        addStudentBtn.setContentAreaFilled(false);
         addStudentBtn.addActionListener(this::addStudentBtnActionPerformed);
+        add(addStudentBtn);
+        addStudentBtn.setBounds(300, 320, 170, 40);
 
         studentListArea.setEditable(false);
         studentListArea.setColumns(20);
         studentListArea.setRows(5);
+        studentListArea.setBorder(null);
         jScrollPane1.setViewportView(studentListArea);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(300, 30, 390, 230);
+
         jLabel1.setText("Student ID");
+        add(jLabel1);
+        jLabel1.setBounds(20, 80, 61, 17);
 
         jLabel2.setText("username");
+        add(jLabel2);
+        jLabel2.setBounds(10, 190, 57, 17);
 
         jLabel4.setText("Name");
+        add(jLabel4);
+        jLabel4.setBounds(30, 140, 34, 17);
 
         jLabel5.setText("password");
+        add(jLabel5);
+        jLabel5.setBounds(10, 240, 58, 17);
+        add(usernameTf);
+        usernameTf.setBounds(80, 180, 178, 30);
 
         jLabel3.setText("Email");
+        add(jLabel3);
+        jLabel3.setBounds(30, 300, 32, 17);
 
-        loadStudentBtn.setText("Load Student Info");
+        loadStudentBtn.setContentAreaFilled(false);
         loadStudentBtn.addActionListener(this::loadStudentBtnActionPerformed);
+        add(loadStudentBtn);
+        loadStudentBtn.setBounds(470, 410, 210, 50);
 
-        updateStudentBtn.setText("Update Student");
+        updateStudentBtn.setContentAreaFilled(false);
         updateStudentBtn.addActionListener(this::updateStudentBtnActionPerformed);
+        add(updateStudentBtn);
+        updateStudentBtn.setBounds(280, 410, 170, 50);
 
-        deleteStudentBtn.setText("Delete");
+        deleteStudentBtn.setContentAreaFilled(false);
         deleteStudentBtn.addActionListener(this::deleteStudentBtnActionPerformed);
+        add(deleteStudentBtn);
+        deleteStudentBtn.setBounds(490, 320, 180, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel1))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(emailTf, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                .addComponent(passwordTf)
-                                .addComponent(nameTf)
-                                .addComponent(studentIdTf))
-                            .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addStudentBtn)
-                            .addComponent(updateStudentBtn))
-                        .addGap(6, 6, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loadStudentBtn)
-                            .addComponent(deleteStudentBtn))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(studentIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(emailTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addStudentBtn)
-                            .addComponent(deleteStudentBtn))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loadStudentBtn)
-                    .addComponent(updateStudentBtn))
-                .addGap(89, 89, 89))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/receptionistmanagestudent 1.png"))); // NOI18N
+        add(jLabel6);
+        jLabel6.setBounds(-250, 0, 937, 506);
     }// </editor-fold>//GEN-END:initComponents
 
     private void studentIdTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdTfActionPerformed
@@ -340,6 +304,7 @@ public class ManageStudentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadStudentBtn;
     private javax.swing.JTextField nameTf;

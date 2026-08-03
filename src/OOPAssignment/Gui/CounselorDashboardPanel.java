@@ -13,35 +13,21 @@ public class CounselorDashboardPanel extends javax.swing.JPanel {
     public CounselorDashboardPanel(User counselor) {
         initComponents();
         this.counselor = counselor;
-        welcomeLbl.setText("Welcome, " + counselor.getName() + "!");
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        welcomeLbl = new javax.swing.JLabel();
+        welcome = new javax.swing.JLabel();
 
-        welcomeLbl.setText("jLabel1");
+        setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(welcomeLbl)
-                .addContainerGap(550, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(welcomeLbl)
-                .addContainerGap(347, Short.MAX_VALUE))
-        );
+        welcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/counselor_dashboard_preview.png"))); // NOI18N
+        add(welcome);
+        welcome.setBounds(-220, 0, 930, 510);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel welcomeLbl;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

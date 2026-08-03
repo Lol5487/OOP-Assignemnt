@@ -36,7 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(new AdminPanel(this, sharedAdmin), "admin");
         cardPanel.add(new StudentLoginPanel(this), "studentLogin");
         cardPanel.add(new CounselorLoginPanel(this, sharedAdmin), "counselorLogin");
-        cardPanel.add(new ReceptionistLoginPanel(this, sharedAdmin), "receptionistLogin");   // 改成这行,加ReceptionistLoginPanel
+        cardPanel.add(new ReceptionistLoginPanel(this, sharedAdmin), "receptionistLogin");
 
         getContentPane().removeAll();
         getContentPane().setLayout(new java.awt.BorderLayout());

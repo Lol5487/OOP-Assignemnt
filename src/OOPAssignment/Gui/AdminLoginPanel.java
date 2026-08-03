@@ -9,7 +9,7 @@ import OOPAssignment.model.Admin;
 public class AdminLoginPanel extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
-    private Admin admin;   // 之后用来验证登入
+    private Admin admin;
 
     public AdminLoginPanel(MainFrame mainFrame, Admin admin) {
         initComponents();
@@ -34,8 +34,6 @@ public class AdminLoginPanel extends javax.swing.JPanel {
             }
         });
     }
-
-    // 下面这两个method,双击按钮后NetBeans会自动生成,你把内容填进去
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,7 +100,7 @@ public class AdminLoginPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String inputUsername = usernameTf.getText();
-        String inputPassword = new String(passwordTf.getPassword());  // JPasswordField要这样拿值
+        String inputPassword = new String(passwordTf.getPassword());
 
         boolean success = admin.login(inputUsername, inputPassword);
 

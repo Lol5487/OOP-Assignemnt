@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import OOPAssignment.util.FileHandler;
+import OOPAssignment.model.Counselor;
 
 public class Admin extends User{
 
@@ -13,7 +14,7 @@ public class Admin extends User{
     private String[] scheduleNames;
     private String[] scheduleDays;     
     private String[] scheduleStartTimes;
-    private String[] scheduleEndTimes;
+    private String[]scheduleEndTimes;
     private int scheduleCount;
 
     public Admin(String username, String password, String name) {
@@ -31,7 +32,7 @@ public class Admin extends User{
         loadSchedule();
     }
 
-    // ---------- CRUD for staff ----------
+//Staff
 
     public boolean addStaff(User newStaff) {
         if (staffCount >= staffList.length) {
@@ -41,7 +42,7 @@ public class Admin extends User{
         staffList[staffCount] = newStaff;
         staffCount++;
 
-        String role = newStaff.getClass().getSimpleName();   // 会自动变成 "Counselor" 或 "Receptionist"
+        String role = newStaff.getClass().getSimpleName();
         String line = newStaff.getUsername() + "," + newStaff.getPassword() + "," + newStaff.getName() + "," + role;
         FileHandler.appendLine("staff.txt", line);
         
@@ -58,6 +59,16 @@ public class Admin extends User{
     }
         public int getStaffCount() {
             return staffCount;
+        }
+        
+        public int countByRole(String role) {
+            int count = 0;
+            for (int i = 0; i < staffCount; i++) {
+                if (staffList[i].getClass().getSimpleName().equalsIgnoreCase(role)) {
+                    count++;
+                }
+            }
+            return count;
         }
     public boolean updateStaff(String username, String newName) {
         for (int i = 0; i < staffCount; i++) {
@@ -84,7 +95,6 @@ public class Admin extends User{
         return false;
     }
 
-    // ---------- Roster / Schedule ----------
 
     public boolean addSchedule(String staffName, String date, String startTime, String endTime) {
         if (scheduleCount >= scheduleNames.length) {
@@ -111,28 +121,56 @@ public class Admin extends User{
         }
         return result;
     }
-    // ---------- Generate report (writes to a text file) ----------
 
     public boolean generateReport(String type) {
-        try {
-            FileWriter fw = new FileWriter(type + "_report.txt");
-            BufferedWriter bw = new BufferedWriter(fw);
+     try {
+         FileWriter fw = new FileWriter(type + "_report.txt");
+         BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write("=== " + type.toUpperCase() + " REPORT ===\n");
-            bw.write("Total staff: " + staffCount + "\n\n");
+         bw.write("=== " + type.toUpperCase() + " REPORT ===\n");
+         bw.write("Generated on: " + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm").format(new java.util.Date()) + "\n\n");
 
-            for (int i = 0; i < staffCount; i++) {
-                bw.write((i + 1) + ". " + staffList[i].getName() + " (" + staffList[i].getUsername() + ")\n");
-            }
+         // Staff summary
+         bw.write("--- Staff Summary ---\n");
+         bw.write("Total staff: " + staffCount + "\n");
+         bw.write("Counselors: " + countByRole("Counselor") + "\n");
+         bw.write("Receptionists: " + countByRole("Receptionist") + "\n\n");
 
-            bw.close();
-            System.out.println("Report saved as " + type + "_report.txt");
-            return true;
-        } catch (IOException e) {
-            System.out.println("Error writing report: " + e.getMessage());
-            return false;
-        }
-    }
+         bw.write("--- Staff List ---\n");
+         for (int i = 0; i < staffCount; i++) {
+             String role = staffList[i].getClass().getSimpleName();
+             bw.write((i + 1) + ". " + staffList[i].getName() + " (" + staffList[i].getUsername() + ") - " + role + "\n");
+         }
+         bw.write("\n");
+
+         // Appointment summary
+         int totalAppointments = OOPAssignment.model.Appointment.getTotalCount();
+         int confirmedCount = OOPAssignment.model.Appointment.getCountByStatus("Confirmed");
+         int pendingCount = OOPAssignment.model.Appointment.getCountByStatus("Pending");
+         int cancelledCount = OOPAssignment.model.Appointment.getCountByStatus("Cancelled");
+
+         bw.write("--- Appointment Summary ---\n");
+         bw.write("Total appointments: " + totalAppointments + "\n");
+         bw.write("Confirmed: " + confirmedCount + "\n");
+         bw.write("Pending: " + pendingCount + "\n");
+         bw.write("Cancelled: " + cancelledCount + "\n\n");
+
+         // Roster summary
+         bw.write("--- Roster Summary ---\n");
+         bw.write("Total schedule entries: " + scheduleCount + "\n");
+         for (int i = 0; i < scheduleCount; i++) {
+             bw.write(scheduleNames[i] + " - " + scheduleDays[i] + " (" 
+                     + scheduleStartTimes[i] + " to " + scheduleEndTimes[i] + ")\n");
+         }
+
+         bw.close();
+         System.out.println("Report saved as " + type + "_report.txt");
+         return true;
+     } catch (IOException e) {
+         System.out.println("Error writing report: " + e.getMessage());
+         return false;
+     }
+ }
         private void loadStaff() {
             String[] lines = FileHandler.readAllLines("staff.txt");
 
@@ -208,7 +246,6 @@ public class Admin extends User{
     public boolean deleteSchedule(String staffName, String date) {
     for (int i = 0; i < scheduleCount; i++) {
         if (scheduleNames[i].equalsIgnoreCase(staffName) && scheduleDays[i].equals(date)) {
-            // 找到了,把后面的资料往前移一格,盖掉这一笔
             for (int j = i; j < scheduleCount - 1; j++) {
                 scheduleNames[j] = scheduleNames[j + 1];
                 scheduleDays[j] = scheduleDays[j + 1];
@@ -217,7 +254,7 @@ public class Admin extends User{
             }
             scheduleCount--;
 
-            rewriteScheduleFile();   // 重新写整个文件(因为文件是一行一行append的,删除要整个重写)
+            rewriteScheduleFile();
 
             return true;
         }
@@ -225,7 +262,6 @@ public class Admin extends User{
     return false;
     }
     private void rewriteScheduleFile() {
-        // 先清空整个文件(用false,不是append模式)
         try {
             FileWriter fw = new FileWriter("staff.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -239,7 +275,7 @@ public class Admin extends User{
             System.out.println("Error rewriting staff file: " + e.getMessage());
         }
     }
-        private void rewriteStaffFile() {
+        public void rewriteStaffFile() {
         try {
                 FileWriter fw = new FileWriter("staff.txt", false);
                 BufferedWriter bw = new BufferedWriter(fw);
@@ -269,6 +305,24 @@ public class Admin extends User{
             if (!found) {
                 result += "No schedule assigned yet.\n";
             }
+            return result;
+        }
+        
+        public String viewCounselorsOnly() {
+            String result = "=== Counselor List ===\n";
+            boolean found = false;
+
+            for (int i = 0; i < staffCount; i++) {
+                if (staffList[i] instanceof Counselor) {
+                    result += (i + 1) + ". " + staffList[i].getName() + " (" + staffList[i].getUsername() + ")\n";
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                result += "No counselors available.\n";
+            }
+
             return result;
         }
 }

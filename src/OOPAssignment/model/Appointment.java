@@ -23,9 +23,8 @@ public class Appointment {
     private String counselorUsername;
     private String date;
     private String time;
-    private String type;      // "Walk-in" or "Online"
-    private String status;    // "Pending", "Confirmed", "Completed", "Cancelled"
-
+    private String type; 
+    private String status; 
     public Appointment() {
     }
 
@@ -40,7 +39,7 @@ public class Appointment {
         this.status = status;
     }
 
-    // ---------- File persistence ----------
+    //File persistence
 
     public static List<Appointment> loadAll() {
         List<Appointment> appointments = new ArrayList<>();
@@ -83,7 +82,7 @@ public class Appointment {
         }
     }
 
-    /** Saves this appointment, updating if the ID already exists, otherwise adding it. */
+
     public void save() {
         List<Appointment> all = loadAll();
         boolean updated = false;
@@ -100,13 +99,13 @@ public class Appointment {
         writeAll(all);
     }
 
-    /** Generates the next appointment ID, e.g. "APT1", "APT2", ... */
+
     public static String generateNextId() {
         List<Appointment> all = loadAll();
         return "APT" + (all.size() + 1);
     }
 
-    // ---------- Queries ----------
+    //Queries
 
     public static List<Appointment> findByStudent(String studentUsername) {
         List<Appointment> result = new ArrayList<>();
@@ -150,7 +149,7 @@ public class Appointment {
         return false;
     }
 
-    /** Total count of appointments (used by Admin for statistics). */
+    /** Total count of appointments (used by Admin for statistics).*/
     public static int getTotalCount() {
         return loadAll().size();
     }
@@ -165,7 +164,7 @@ public class Appointment {
         return count;
     }
 
-    // ---------- Getters / Setters ----------
+    //Getters / Setters
 
     public String getAppointmentId() {
         return appointmentId;

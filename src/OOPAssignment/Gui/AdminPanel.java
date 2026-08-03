@@ -16,7 +16,9 @@ public class AdminPanel extends javax.swing.JPanel {
     private MainFrame mainFrame;
     private Admin admin;
     private CardLayout innerCardLayout;
-    
+    private ReportsPanel reportsPanel;
+    private String currentPage = "dashboard";
+
     public AdminPanel(MainFrame mainFrame, Admin admin) {
         initComponents();
         ManageStaffLbl.setVisible(false);
@@ -28,9 +30,33 @@ public class AdminPanel extends javax.swing.JPanel {
         contentPanel.add(new AdminDashboardPanel(admin), "dashboard");
         contentPanel.add(new ManageStaffPanel(admin), "manageStaff");
         contentPanel.add(new RosterPanel(admin), "roster");
-        contentPanel.add(new ReportsPanel(admin), "reports");
+
+        reportsPanel = new ReportsPanel(admin);
+        contentPanel.add(reportsPanel, "reports");
 
         innerCardLayout.show(contentPanel, "dashboard");
+
+        addHoverIcon(dashboardBtn, "/OOPAssignment/Gui/Blue Button Effect (1) (1).png", "dashboard");
+        addHoverIcon(manageStaffBtn, "/OOPAssignment/Gui/Blue Button Effect (2).png", "manageStaff");
+        addHoverIcon(rosterBtn, "/OOPAssignment/Gui/Blue Button Effect (1) (2).png", "roster");
+        addHoverIcon(reportBtn, "/OOPAssignment/Gui/Blue Button Effect (1) (3).png", "reports");
+        addHoverIcon(logoutBtn, "/OOPAssignment/Gui/generate_report_charts 1 (6) (2).png", "logout");
+    }
+
+    private void addHoverIcon(javax.swing.JButton btn, String iconPath, String pageName) {
+        javax.swing.ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource(iconPath));
+
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!currentPage.equals(pageName)) {
+                    btn.setIcon(icon);
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn.setIcon(null);
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +76,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         rosterBtn = new javax.swing.JButton();
+        dashboardBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -60,7 +87,6 @@ public class AdminPanel extends javax.swing.JPanel {
         ManageStaffLbl = new javax.swing.JLabel();
         RosterPanelLbl = new javax.swing.JLabel();
         ReportPanelLbl = new javax.swing.JLabel();
-        dashboardBtn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -107,7 +133,12 @@ public class AdminPanel extends javax.swing.JPanel {
         rosterBtn.setContentAreaFilled(false);
         rosterBtn.addActionListener(this::rosterBtnActionPerformed);
         add(rosterBtn);
-        rosterBtn.setBounds(20, 250, 140, 30);
+        rosterBtn.setBounds(17, 243, 146, 46);
+
+        dashboardBtn.setContentAreaFilled(false);
+        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
+        add(dashboardBtn);
+        dashboardBtn.setBounds(17, 138, 145, 46);
 
         jPanel3.setLayout(new java.awt.CardLayout());
         add(jPanel3);
@@ -136,17 +167,17 @@ public class AdminPanel extends javax.swing.JPanel {
         reportBtn.setContentAreaFilled(false);
         reportBtn.addActionListener(this::reportBtnActionPerformed);
         add(reportBtn);
-        reportBtn.setBounds(20, 300, 130, 30);
+        reportBtn.setBounds(17, 296, 145, 46);
 
         logoutBtn.setContentAreaFilled(false);
         logoutBtn.addActionListener(this::logoutBtnActionPerformed);
         add(logoutBtn);
-        logoutBtn.setBounds(20, 440, 140, 40);
+        logoutBtn.setBounds(17, 430, 145, 46);
 
         manageStaffBtn.setContentAreaFilled(false);
         manageStaffBtn.addActionListener(this::manageStaffBtnActionPerformed);
         add(manageStaffBtn);
-        manageStaffBtn.setBounds(20, 200, 140, 30);
+        manageStaffBtn.setBounds(17, 190, 145, 46);
 
         DashBoardLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Admin Dashboard.png"))); // NOI18N
         add(DashBoardLbl);
@@ -164,20 +195,7 @@ public class AdminPanel extends javax.swing.JPanel {
         ReportPanelLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(ReportPanelLbl);
         ReportPanelLbl.setBounds(0, -10, 930, 510);
-
-        dashboardBtn.setContentAreaFilled(false);
-        dashboardBtn.addActionListener(this::dashboardBtnActionPerformed);
-        add(dashboardBtn);
-        dashboardBtn.setBounds(20, 140, 140, 40);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
-        innerCardLayout.show(contentPanel, "manageStaff");
-        ManageStaffLbl.setVisible(true);
-        DashBoardLbl.setVisible(false);
-        RosterPanelLbl.setVisible(false);
-        ReportPanelLbl.setVisible(false);
-    }//GEN-LAST:event_manageStaffBtnActionPerformed
 
     private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
         innerCardLayout.show(contentPanel, "dashboard");
@@ -185,6 +203,9 @@ public class AdminPanel extends javax.swing.JPanel {
         DashBoardLbl.setVisible(true);
         RosterPanelLbl.setVisible(false);
         ReportPanelLbl.setVisible(false);
+
+        currentPage = "dashboard";
+        dashboardBtn.setIcon(null);
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
     private void rosterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rosterBtnActionPerformed
@@ -193,19 +214,37 @@ public class AdminPanel extends javax.swing.JPanel {
         DashBoardLbl.setVisible(false);
         RosterPanelLbl.setVisible(true);
         ReportPanelLbl.setVisible(false);
+
+        currentPage = "roster";
+        rosterBtn.setIcon(null);
     }//GEN-LAST:event_rosterBtnActionPerformed
 
     private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
-        innerCardLayout.show(contentPanel, "reports");       
+        innerCardLayout.show(contentPanel, "reports");
         ManageStaffLbl.setVisible(false);
         DashBoardLbl.setVisible(false);
         RosterPanelLbl.setVisible(false);
         ReportPanelLbl.setVisible(true);
+        reportsPanel.startChartAnimation();
+
+        currentPage = "reports";
+        reportBtn.setIcon(null);
     }//GEN-LAST:event_reportBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
             mainFrame.showPanel("menu");
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void manageStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStaffBtnActionPerformed
+        innerCardLayout.show(contentPanel, "manageStaff");
+        ManageStaffLbl.setVisible(true);
+        DashBoardLbl.setVisible(false);
+        RosterPanelLbl.setVisible(false);
+        ReportPanelLbl.setVisible(false);
+
+        currentPage = "manageStaff";
+        manageStaffBtn.setIcon(null);
+    }//GEN-LAST:event_manageStaffBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

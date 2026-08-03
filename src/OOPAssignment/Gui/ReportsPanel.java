@@ -7,13 +7,43 @@ package OOPAssignment.Gui;
 import OOPAssignment.model.Admin;
 
 public class ReportsPanel extends javax.swing.JPanel {
-
     private Admin admin;
-
+    private AnimatedBarChartPanel ChartPanel;
+    private StaffRoleDonutPanel donutPanel;
+    
     public ReportsPanel(Admin admin) {
         initComponents();
         this.admin = admin;
+        
+    ChartPanel = new AnimatedBarChartPanel();
+    ChartPanel.setBounds(340, 60, 400, 150);
+
+    int confirmedCount = OOPAssignment.model.Appointment.getCountByStatus("Confirmed");
+    int pendingCount = OOPAssignment.model.Appointment.getCountByStatus("Pending");
+    int cancelledCount = OOPAssignment.model.Appointment.getCountByStatus("Cancelled");
+
+    ChartPanel.setData(confirmedCount, pendingCount, cancelledCount);
+
+    add(ChartPanel, 0);   
+    
+    donutPanel = new StaffRoleDonutPanel(admin);
+    donutPanel.setBounds(50, 230, 660, 180);
+    add(donutPanel, 0);
+    }  
+    
+    public void startChartAnimation() {
+        int confirmedCount = OOPAssignment.model.Appointment.getCountByStatus("Confirmed");
+        int pendingCount = OOPAssignment.model.Appointment.getCountByStatus("Pending");
+        int cancelledCount = OOPAssignment.model.Appointment.getCountByStatus("Cancelled");
+
+        ChartPanel.setData(confirmedCount, pendingCount, cancelledCount);
+        ChartPanel.startAnimation();
+        
+        donutPanel.refreshData();
+        
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -24,6 +54,7 @@ public class ReportsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         reportTypeCombo = new javax.swing.JComboBox<>();
         generateBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -35,20 +66,21 @@ public class ReportsPanel extends javax.swing.JPanel {
         reportTypeCombo.setForeground(new java.awt.Color(204, 204, 204));
         reportTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Daily", "Monthly", "Quarterly", "Yearly" }));
         reportTypeCombo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        reportTypeCombo.setFocusable(false);
         add(reportTypeCombo);
         reportTypeCombo.setBounds(50, 110, 170, 30);
 
         generateBtn.setContentAreaFilled(false);
         generateBtn.addActionListener(this::generateBtnActionPerformed);
         add(generateBtn);
-        generateBtn.setBounds(60, 143, 240, 30);
+        generateBtn.setBounds(50, 150, 240, 40);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/AdminManageStaff.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/generate_report_charts 1 (8) (1).png"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(932, 507));
         jLabel1.setMinimumSize(new java.awt.Dimension(932, 507));
         add(jLabel1);
-        jLabel1.setBounds(-170, 0, 930, 510);
+        jLabel1.setBounds(-170, 0, 935, 510);
     }// </editor-fold>//GEN-END:initComponents
 
     private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
@@ -58,7 +90,7 @@ public class ReportsPanel extends javax.swing.JPanel {
 
         if (success) {
             javax.swing.JOptionPane.showMessageDialog(this, 
-                type + " report generated successfully!\nSaved as: " + type.toLowerCase() + "_report.txt");
+                type + " report generated successfully!\nSaved as: " + type.toLowerCase() + "_report.txt"); 
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Failed to generate report!");
         }
@@ -69,6 +101,7 @@ public class ReportsPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> reportTypeCombo;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,4 +26,32 @@ public class Validator {
         }
         return true;
     }
+    
+    public static boolean isValidTime(String time) {
+    if (isEmpty(time)) {
+        return false;
+    }
+
+    String[] parts = time.split(":");
+
+    if (parts.length != 2) {
+        return false;
+    }
+
+    try {
+        int hour = Integer.parseInt(parts[0].trim());
+        int minute = Integer.parseInt(parts[1].trim());
+
+        if (hour < 0 || hour > 23) {
+            return false;
+        }
+        if (minute < 0 || minute > 59) {
+            return false;
+        }
+
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
 }

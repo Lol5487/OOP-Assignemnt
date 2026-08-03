@@ -11,6 +11,7 @@ public class RosterPanel extends javax.swing.JPanel {
 
     private Admin admin;
 
+
     public RosterPanel(Admin admin) {
         initComponents();
         this.admin = admin;
@@ -19,7 +20,6 @@ public class RosterPanel extends javax.swing.JPanel {
         javax.swing.JSpinner.DateEditor dateEditor = new javax.swing.JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
         dateSpinner.setEditor(dateEditor);
         dateEditor.getTextField().setBackground(new java.awt.Color(34,34,38));
-        dateEditor.getTextField().setForeground(new java.awt.Color(204, 204, 204));
         refreshData();
         dateSpinner.setBackground(new java.awt.Color(45, 45, 50));
     }
@@ -27,6 +27,7 @@ public class RosterPanel extends javax.swing.JPanel {
     private void refreshData() {
         scheduleListArea.setText(admin.viewSchedule());
     }
+
 
 
     /**
@@ -67,7 +68,7 @@ public class RosterPanel extends javax.swing.JPanel {
         scheduleListArea.setEditable(false);
         scheduleListArea.setBackground(new java.awt.Color(20, 20, 22));
         scheduleListArea.setColumns(20);
-        scheduleListArea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        scheduleListArea.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
         scheduleListArea.setForeground(new java.awt.Color(204, 204, 204));
         scheduleListArea.setRows(5);
         scheduleListArea.setText("wadawdawdawdawd");
@@ -118,7 +119,6 @@ public class RosterPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_staffNameTfActionPerformed
 
     private void addScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addScheduleBtnActionPerformed
-
         String staffName = staffNameTf.getText();
 
         java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
@@ -130,6 +130,11 @@ public class RosterPanel extends javax.swing.JPanel {
 
         if (Validator.isEmpty(staffName) || Validator.isEmpty(startTime) || Validator.isEmpty(endTime)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
+            return;
+        }
+
+        if (!Validator.isValidTime(startTime) || !Validator.isValidTime(endTime)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid time in HH:MM format (e.g. 09:00)!");
             return;
         }
 
@@ -165,7 +170,7 @@ public class RosterPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_endTimeTfActionPerformed
 
     private void deleteScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteScheduleBtnActionPerformed
-        String staffName = staffNameTf.getText();
+      String staffName = staffNameTf.getText();
 
         java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
@@ -185,7 +190,6 @@ public class RosterPanel extends javax.swing.JPanel {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Schedule not found! Please check name and date.");
         }
-
     }//GEN-LAST:event_deleteScheduleBtnActionPerformed
 
 

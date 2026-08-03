@@ -1,5 +1,7 @@
-couns01,pass123,Jijiwai,Counselor
+couns01,pass123,Jiji,Counselor
 couns02,123123,BAOZHA,Counselor
 couns03,12341234,Bababoi,Counselor
 recep01,pass123,Bryan,Receptionist
-Recep02,pass123,Sigma Man,Counselor
+recep03,pass123,Omggg,Receptionist
+couns04,pass123,DuBistGutGenug,Counselor
+couns05,pass123,ccy,Counselor

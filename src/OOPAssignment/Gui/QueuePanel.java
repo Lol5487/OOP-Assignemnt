@@ -20,7 +20,7 @@ public class QueuePanel extends javax.swing.JPanel {
     }
 
     private void refreshData() {
-        // 显示预约列表(保留原本的功能)
+
         List<Appointment> allAppointments = Appointment.loadAll();
         String appointmentResult = "=== All Appointments ===\n";
         if (allAppointments.isEmpty()) {
@@ -35,7 +35,7 @@ public class QueuePanel extends javax.swing.JPanel {
             }
         }
 
-        // 显示学生列表(新加的)
+
         List<Student> allStudents = Student.loadAll();
         String studentResult = "=== Student List ===\n";
         if (allStudents.isEmpty()) {
@@ -63,53 +63,37 @@ public class QueuePanel extends javax.swing.JPanel {
         resultLbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         studentListArea = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+
+        setLayout(null);
+        add(studentIdTf);
+        studentIdTf.setBounds(90, 103, 175, 30);
 
         jLabel1.setText("Student ID");
+        add(jLabel1);
+        jLabel1.setBounds(20, 110, 61, 17);
 
-        generateBtn.setText("Generate");
+        generateBtn.setText(" ");
+        generateBtn.setContentAreaFilled(false);
         generateBtn.addActionListener(this::generateBtnActionPerformed);
+        add(generateBtn);
+        generateBtn.setBounds(310, 320, 110, 30);
 
         resultLbl.setText("Result");
+        add(resultLbl);
+        resultLbl.setBounds(310, 360, 112, 17);
 
         studentListArea.setEditable(false);
         studentListArea.setColumns(20);
         studentListArea.setRows(5);
         jScrollPane1.setViewportView(studentListArea);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(resultLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(generateBtn))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(studentIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(generateBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resultLbl)
-                .addGap(134, 134, 134))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
+        add(jScrollPane1);
+        jScrollPane1.setBounds(300, 30, 360, 250);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/Queue 1.png"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(-250, 0, 937, 506);
     }// </editor-fold>//GEN-END:initComponents
 
     private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
@@ -139,6 +123,7 @@ public class QueuePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel resultLbl;
     private javax.swing.JTextField studentIdTf;
