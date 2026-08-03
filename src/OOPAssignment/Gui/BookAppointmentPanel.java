@@ -7,38 +7,59 @@ package OOPAssignment.Gui;
 import OOPAssignment.model.Appointment;
 import OOPAssignment.model.Student;
 import OOPAssignment.util.Validator;
+import java.time.LocalTime;
+
 
 public class BookAppointmentPanel extends javax.swing.JPanel {
 
     private Student student;
+    
+    private void refreshData() {
+    java.util.List<Appointment> myAppointments =
+            Appointment.findByStudent(student.getUsername());
+
+    String result = "=== My Appointments ===\n";
+
+    if (myAppointments.isEmpty()) {
+        result += "No appointments yet.\n";
+    } else {
+        for (Appointment a : myAppointments) {
+            result += a.getAppointmentId()
+                    + " - "
+                    + a.getDate()
+                    + " "
+                    + a.getTime()
+                    + " with "
+                    + a.getCounselorUsername()
+                    + " ("
+                    + a.getStatus()
+                    + ")\n";
+        }
+    }
+
+    resultArea.setText(result);
+}
 
     public BookAppointmentPanel(Student student) {
         initComponents();
         this.student = student;
 
         javax.swing.SpinnerDateModel dateModel = new javax.swing.SpinnerDateModel();
-        dateSpinner.setModel(dateModel);
-        javax.swing.JSpinner.DateEditor dateEditor = new javax.swing.JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
-        dateSpinner.setEditor(dateEditor);
+    dateSpinner.setModel(dateModel);
+    javax.swing.JSpinner.DateEditor dateEditor =
+            new javax.swing.JSpinner.DateEditor(dateSpinner, "yyyy-MM-dd");
+    dateSpinner.setEditor(dateEditor);
 
-        resultArea.setEditable(false);
-        refreshData();
-    }
+    // Time Spinner
+    javax.swing.SpinnerDateModel timeModel = new javax.swing.SpinnerDateModel();
+    timeSpinner.setModel(timeModel);
+    javax.swing.JSpinner.DateEditor timeEditor =
+            new javax.swing.JSpinner.DateEditor(timeSpinner, "HH:mm");
+    timeSpinner.setEditor(timeEditor);
 
-    private void refreshData() {
-        java.util.List<Appointment> myAppointments = Appointment.findByStudent(student.getUsername());
-
-        String result = "=== My Appointments ===\n";
-        if (myAppointments.isEmpty()) {
-            result += "No appointments yet.\n";
-        } else {
-            for (Appointment a : myAppointments) {
-                result += a.getAppointmentId() + " - " + a.getDate() + " " + a.getTime()
-                        + " with " + a.getCounselorUsername() + " (" + a.getStatus() + ")\n";
-            }
-        }
-        resultArea.setText(result);
-    }
+    resultArea.setEditable(false);
+    refreshData();
+}
 
 
     /**
@@ -53,7 +74,6 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
         counselorUsernameTf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         dateSpinner = new javax.swing.JSpinner();
-        timeTf = new javax.swing.JTextField();
         typeCombo = new javax.swing.JComboBox<>();
         bookBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,6 +82,7 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         refreshBtn = new javax.swing.JButton();
+        timeSpinner = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,7 +92,6 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
         jLabel1.setText("Counselor Username:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, -1, -1));
         add(dateSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 160, 100, -1));
-        add(timeTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 213, 74, -1));
 
         typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Physical", "Online" }));
         add(typeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 253, -1, -1));
@@ -109,6 +129,7 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
         refreshBtn.setBorder(null);
         refreshBtn.addActionListener(this::refreshBtnActionPerformed);
         add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 80, 20));
+        add(timeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 210, 100, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OOPAssignment/Gui/studentblank.png"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -116,34 +137,61 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookBtnActionPerformed
-        String counselorUsername = counselorUsernameTf.getText();
+        String counselorUsername = counselorUsernameTf.getText().trim();
 
-        java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(selectedDate);
+    // Date
+    java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
+    java.text.SimpleDateFormat sdf =
+            new java.text.SimpleDateFormat("yyyy-MM-dd");
+    String date = sdf.format(selectedDate);
 
-        String time = timeTf.getText();
-        String type = (String) typeCombo.getSelectedItem();
+    // Time
+    java.util.Date selectedTime = (java.util.Date) timeSpinner.getValue();
+    java.text.SimpleDateFormat tf =
+            new java.text.SimpleDateFormat("HH:mm");
+    String time = tf.format(selectedTime);
 
-        if (Validator.isEmpty(counselorUsername) || Validator.isEmpty(time)) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields!");
-            return;
-        }
-        
-        if (!Validator.isValidTime(time)) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid time in HH:MM format (e.g. 09:00)!");
-            return;
-            }
+    String type = (String) typeCombo.getSelectedItem();
 
-        String id = Appointment.generateNextId();
-        Appointment appointment = new Appointment(id, student.getUsername(), counselorUsername,
-                date, time, type, "Pending");
-        appointment.save();
+    if (Validator.isEmpty(counselorUsername)) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Please enter counselor username!");
+        return;
+    }
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Appointment booked successfully! ID: " + id);
-        counselorUsernameTf.setText("");
-        timeTf.setText("");
-        refreshData();
+    // Only allow bookings between 08:00 and 17:00
+    LocalTime appointmentTime = LocalTime.parse(time);
+
+    LocalTime open = LocalTime.of(8, 0);
+    LocalTime close = LocalTime.of(17, 0);
+
+    if (appointmentTime.isBefore(open) || appointmentTime.isAfter(close)) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Appointment time must be between 08:00 and 17:00.");
+        return;
+    }
+
+    String id = Appointment.generateNextId();
+
+    Appointment appointment = new Appointment(
+            id,
+            student.getUsername(),
+            counselorUsername,
+            date,
+            time,
+            type,
+            "Pending"
+    );
+
+    appointment.save();
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Appointment booked successfully!\nAppointment ID: " + id);
+
+    counselorUsernameTf.setText("");
+    timeSpinner.setValue(new java.util.Date());
+
+    refreshData();
     }//GEN-LAST:event_bookBtnActionPerformed
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
@@ -163,7 +211,7 @@ public class BookAppointmentPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshBtn;
     private javax.swing.JTextArea resultArea;
-    private javax.swing.JTextField timeTf;
+    private javax.swing.JSpinner timeSpinner;
     private javax.swing.JComboBox<String> typeCombo;
     // End of variables declaration//GEN-END:variables
 }
